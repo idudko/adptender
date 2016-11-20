@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-12 10:19+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: apps/accreditation/management.py:10 apps/request/management.py:10
+#: apps/request/management.py:12
+msgid "Acceptance Received"
+msgstr "Получено одобрение"
+
+#: apps/accreditation/management.py:10
+msgid "accreditation request you sent has been accepted"
+msgstr "Отправленный Вами запрос на аккредитацию был одобрен"
+
+#: apps/accreditation/management.py:11 apps/request/management.py:11
+#: apps/request/management.py:13
+msgid "Rejection Received"
+msgstr "Получен отказ"
+
+#: apps/accreditation/management.py:11
+msgid "accreditation request you sent has been rejected"
+msgstr "Отправленный Вами запрос на аккредитацию был отклонен"
+
+#: apps/core/customfields.py:22 apps/core/customfields.py:44
+#: apps/core/customfields.py:66 apps/core/customfields.py:89
+msgid "This field is required."
+msgstr "Это обязательное поле."
+
+#: apps/core/customfields.py:23
+msgid "Неправильный формат ОГРН, убедитесь, что это значение содержит 13 цифр "
+msgstr ""
+
+#: apps/core/customfields.py:45
+msgid "Неправильный формат КПП, убедитесь, что это значение содержит 9 цифр "
+msgstr ""
+
+#: apps/core/customfields.py:67
+msgid "Неправильный формат ИНН, убедитесь, что это значение содержит 10 цифр "
+msgstr ""
+
+#: apps/core/customfields.py:90
+msgid ""
+"Введите телефон с кодом страны и города (или мобильного оператора) в формате "
+"+7 (846) ххх-хх-хх или +7846ххххххх"
+msgstr ""
+
+#: apps/core/customfields.py:110
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: apps/core/management.py:10
+msgid "Operator notice"
+msgstr "Уведомление оператора"
+
+#: apps/core/management.py:10
+msgid "message from system operator"
+msgstr "Сообщение от оператора системы"
+
+#: apps/request/management.py:10
+msgid "sell request you sent has been accepted"
+msgstr "Отправленный Вами запрос на проведение торгов был одобрен"
+
+#: apps/request/management.py:11
+msgid "sell request you sent has been rejected"
+msgstr "Отправленный Вами запрос на проведение торгов был отклонен"
+
+#: apps/request/management.py:12
+msgid "buy request you sent has been accepted"
+msgstr "Отправленный Вами запрос на участие в торгах был одобрен"
+
+#: apps/request/management.py:13
+msgid "buy request you sent has been rejected"
+msgstr "Отправленный Вами запрос на участие в торгах был отклонен"
+
+#: apps/storage/extra.py:36
+msgid "Filetype not supported."
+msgstr ""
+
+#: templates/notification/email_body.txt:1
+#, python-format
+msgid ""
+"You have received the following notice from %(current_site)s:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"To see other notices or change how you receive notifications, please go to "
+"%(notices_url)s.\n"
+msgstr ""
+"Вы получили данное уведомление от %(current_site)s:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"Для просмотра уведомлений и ли изменения способа получения уведомлений, "
+"проследуйте на %(notices_url)s.\n"
+
+#: templates/notification/notices.html:34
+msgid "No notices."
+msgstr "Нет уведомлений"
+
+#: templates/notification/notices.html:42
+msgid "Settings"
+msgstr "Параметры"
+
+#: templates/notification/single.html:6
+msgid "Notice"
+msgstr "Нет уведомлений"
+
+#: templates/pagination/pagination.html:5
+#: templates/pagination/pagination.html:7
+msgid "previous"
+msgstr "предыдущая"
+
+#: templates/pagination/pagination.html:21
+#: templates/pagination/pagination.html:23
+msgid "next"
+msgstr "следующая"
+
+#: templates/registration/password_change_done.html:5
+#: templates/registration/password_change_form.html:3
+#: templates/registration/password_reset_done.html:4
+msgid "Home"
+msgstr ""
+
+#: templates/registration/password_change_done.html:5
+#: templates/registration/password_change_form.html:3
+#: templates/registration/password_change_form.html:4
+#: templates/registration/password_change_form.html:7
+msgid "Password change"
+msgstr ""
+
+#: templates/registration/password_change_done.html:7
+#: templates/registration/password_change_done.html:11
+msgid "Password change successful"
+msgstr ""
+
+#: templates/registration/password_change_done.html:13
+msgid "Your password was changed."
+msgstr ""
+
+#: templates/registration/password_change_form.html:9
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: templates/registration/password_change_form.html:20
+msgid "New password:"
+msgstr ""
+
+#: templates/registration/password_change_form.html:25
+msgid "Confirm password:"
+msgstr ""
+
+#: templates/registration/password_change_form.html:29
+msgid "Change my password"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:4
+#: templates/registration/password_reset_form.html:4
+#: templates/registration/password_reset_form.html:8
+msgid "Password reset"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:6
+#: templates/registration/password_reset_done.html:10
+msgid "Password reset successful"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted. You should be receiving it shortly."
+msgstr ""
+
+#: templates/registration/password_reset_form.html:10
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll e-mail "
+"instructions for setting a new one."
+msgstr ""
+
+#: templates/registration/password_reset_form.html:14
+msgid "E-mail address:"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:14
+msgid "Reset my password"
+msgstr ""
+
+#~ msgid "Your email address:"
+#~ msgstr "Ваш адрес электроонной почты:"
+
+#~ msgid "Your mobile phone number:"
+#~ msgstr "Ваш номер мобильного телефона:"
+
+#~ msgid "Notification Type"
+#~ msgstr "Тип уведомления"
+
+#~ msgid "Change"
+#~ msgstr "Изменить"

@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block content %}
+{% for breadcrumb in request.breadcrumbs %}
+{% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+{% endfor %}
+
+
+
+    {% ifequal req.status 1 %}
+         <p>Просмотр / <a href="{% url apps.request.views.buy_review id=req.id %}">Рассмотреть заявление</a></p>
+    {% endifequal %}
+
+
+    <div class="header">
+        <h3>Просмотр заявки на участие в торгах</h3>
+    </div>
+
+    <table>
+        <tr>
+            <td>Обязательство соблюдать требования, указанные в сообщении о проведении открытых торгов</td>
+            <td>{{ req.confirm|yesno:'Обязуюсь, Отказываюсь' }}</td>
+        </tr>
+        <tr>
+            <td>Сведения о наличии или об отсутствии заинтересованности заявителя</td>
+            <td>{{ req.information_by_interest|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Предложение о цене имущества</td>
+            <td>{{ req.price_offer|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <th>Статус</th>
+            <th>{{ req.get_status_display|default:'Нет данных' }}</th>
+        </tr>
+        </table>
+
+    <h4>Заявитель</h4>
+    <table>
+        <tr>
+            <td>Фамилия</td>
+            <td>{{ profile.last_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ profile.first_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>{{ profile.middle_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>ИНН</td>
+            <td>{{ profile.inn|default:'Нет данных' }}</td>
+        </tr>
+
+        {% ifequal profile.member_type 1 %}
+        <tr>
+            <td>Наименование документа</td>
+            <td>{{ profile.document_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Серия</td>
+            <td>{{ profile.document_series|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Номер</td>
+            <td>{{ profile.document_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Дата выдачи</td>
+            <td>{{ profile.document_date_of_issue|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Кем выдан</td>
+            <td>{{ profile.document_origin|default:'Нет данных' }}</td>
+        </tr>                                
+        {% endifequal %}
+
+        <tr>
+            <td>Наименование компании</td>
+            <td>{{ profile.company_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Краткое наименование</td>
+            <td>{{ profile.short_company_name|default:'Нет данных' }}</td>
+        </tr>
+        {% ifequal profile.member_type 2 %}
+
+        {% endifequal %}
+
+      </table>
+
+
+    <h4>Удостоверяющие документы</h4>
+    <table>
+         {% ifequal profile.member_type 1 %}
+         <tr>
+            <td>Документ, удостоверяющий личность</td>
+            <td>
+                <a href="{{ req.identity_card.url}}"
+                   title="Открыть файл">Просмотр ({{ req.identity_card.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+        {% ifequal profile.member_type 2 %}
+         <tr>
+            <th>Выписка из ЕГРЮЛ</th>
+            <td>
+                <a href="{{ req.extract_egrul.url }}"
+                   title="Открыть файл">Просмотр ({{ req.extract_egrul.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Копии учредительных документов</th>
+            <td>
+                <a href="{{ req.constituent_document.url }}"
+                   title="Открыть файл">Просмотр ({{ req.constituent_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Документы, подтверждающие полномочия руководителя</th>
+            <td>
+                <a href="{{ req.leader_permit_document.url }}"
+                   title="Открыть файл">Просмотр ({{ req.leader_permit_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+
+        {% ifequal profile.member_type 3 %}
+         <tr>
+            <td>Выписка из ЕГРИП</td>
+            <td>
+                <a href="{{ req.extract_egrip.url }}"
+                   title="Открыть файл">Просмотр ({{ req.extract_egrip.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+        </table>
+
+    <h4>Контактная информация</h4>
+    <table>
+        <tr>
+            <td>Страна</td>
+            <td>{{ profile.country|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Регион</td>
+            <td>{{ profile.region|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Населенный пункт</td>
+            <td>{{ profile.populated_locality_type|default:'' }} {{ profile.populated_locality|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.address|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Контактный телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес электронной почты</td>
+            <td>{{ profile.user.email|default:'Нет данных' }}</td>
+        </tr>
+    </table>
+
+{% endblock %}

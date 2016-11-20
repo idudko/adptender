@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+    
+    <div class="header">
+        <h3>Заявки на проведение торгов</h3>
+    </div>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Дата и время подачи заявки</th>
+            <th>Состояние</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for request in request_list %}
+            <tr>
+                <td>
+                    <a href="{% url apps.request.views.sell_request_view id=request.id %}"
+                       title="Просмотр">{{ request.create_date|date:"d.m.Y H:i" }}</a>
+                </td>
+                <td>{{ request.get_status_display }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">Нет активных заявок на проведение торгов.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

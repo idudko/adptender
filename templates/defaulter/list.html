@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if perms.defaulter.add %}
+        <a href="{% url apps.defaulter.views.add %}" title="Добавить банкрота">Добавить</a>
+    {% endif %}
+    <table>
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>ИНН</th>
+            <th>Дата публикации</th>
+            <th>Дата начала продажи</th>
+            <th>Размер задатка</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for defaulter in defaulter_list %}
+            <tr>
+                <td>
+                    <a href="{% url apps.defaulter.views.view id=defaulter.id %}"
+                       title="Просмотр">{{ defaulter.name }}</a>
+                </td>
+                <td>{{ defaulter.inn }}</td>
+                <td>{{ defaulter.publication_date|date:"d.m.Y" }}</td>
+                <td>{{ defaulter.auction_start_date|date:"d.m.Y" }}</td>
+                <td>{{ defaulter.deposit_amount }}</td>
+                <td>
+                    <a href="{% url apps.lot.views.list defaulter_id=defaulter.id %}"
+                       title="Показать лоты">Лоты</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Нет данных</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

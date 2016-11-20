@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if perms.lot.add %}
+        <a href="{% url apps.lot.views.add defaulter_id=defaulter_id %}" title="Добавить лот">Добавить</a>
+    {% endif %}
+    <table>
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Единицы измерения</th>
+            <th>Количество</th>
+            <th>Описание</th>
+            <th>Аукцион</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lot in lot_list %}
+            <tr>
+                <td>
+                    <a href="{% url apps.lot.views.view id=lot.id %}"
+                       title="Просмотр">{{ lot.name }}</a>
+                </td>
+                <td>{{ lot.unit_measurement }}</td>
+                <td>{{ lot.count }}</td>
+                <td>{{ lot.description }}</td>
+                <td>
+                    {% for auction in auction_list %}
+                        <a href="{{ auction.get_absolute_url }}" title="Посмотреть аукцион">Аукцион</a>
+                    {% empty %}
+                        <a href="{% url apps.auction.views.add %}" title="Посмотреть аукцион">Создать аукцион</a>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Нет данных</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

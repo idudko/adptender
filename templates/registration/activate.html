@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>Активация</h3>
+    Здравствуйте, {{ account }}!<br/>
+    Ваша учетная запись активирована. <a href="{% url auth_login %}">Войти</a> на сайт.
+    <br/><br/>
+{% endblock %}

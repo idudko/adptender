@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui-timepicker.css" type="text/css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.datetimepicker.ru.js"></script>
+
+    <script type="text/javascript">
+
+        $(function() {
+
+            $('#id_2-deposit_payment_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+            $('#id_2-deposit_return_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<h3>Создание торгов</h3>
+<p>Шаг {{ step }} из {{ step_count }}</p>
+
+    <form action="{{ url }}" method="post" enctype="multipart/form-data" class="uniForm">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label }}
+                   </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
+
+        <div class="buttonHolder">
+            <input type="submit" value="Продолжить" />
+        </div>
+        <br/>
+    </form>
+
+{% endblock %}

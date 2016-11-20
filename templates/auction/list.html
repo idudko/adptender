@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <table>
+    <thead>
+        <tr>
+            <th>Код</th>
+            <th>Предмет</th>
+            <th>Начальная цена</th>
+            <th>Последнее предложение</th>
+            <th>Дата и время начала торгов</th>
+            <th>Состояние</th>
+        </tr>
+       </thead>
+        <tbody>
+        {% for auction in auctions.object_list %}
+            <tr>
+                <td>АДП-{{ auction.id }}</td>
+                <td><a href="{% url apps.auction.views.view id=auction.id %}" title="Просмотр">{{ auction.lot.object_name }}</a></td>
+                <td>{{ auction.start_price }}</td>
+                <td>{{ auction.result_price|default:'Нет данных' }}</td>
+                <td>{{ auction.event_start_date|date:"d.m.Y H:i" }}</td>
+                <td>{{ auction.get_status_display|default:'Нет данных' }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5">Нет активных аукционов</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if auctions.has_previous %}
+            <a href="?page={{ auctions.previous_page_number }}">&larr;</a>
+        {% endif %}
+
+        <span class="current">
+            {{ auctions.count }}   Страница {{ auctions.number }} из {{ auctions.paginator.num_pages }}.
+        </span>
+
+        {% if auctions.has_next %}
+            <a href="?page={{ auctions.next_page_number }}">&rarr;</a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock %}

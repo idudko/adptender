@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if perms.lot.edit %}
+        <a href="{% url apps.lot.views.edit id=lot.id %}">Редактировать</a>
+    {% endif %}
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Наименование</th>
+            <td>{{ lot.name }}</td>
+        </tr>
+        <tr>
+            <th>Количество</th>
+            <td>{{ lot.count }} {{ lot.unit_measurement }}</td>
+        </tr>
+        <tr>
+            <th>Описание</th>
+            <td>{{ lot.description }}</td>
+        </tr>
+        <tr>
+            <th>Файл</th>
+            <td>
+                <a href="{{ lot.file.url }}"
+                   title="Открыть файл">Просмотр ({{ lot.file.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        <tr>
+            <th>Описание файла</th>
+            <td>{{ lot.file_description }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

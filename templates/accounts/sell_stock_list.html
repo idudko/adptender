@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load tree_menu_tags %}
+    {% load url_filters %}
+
+    <div class="navmenu2">
+        {% if "^/accounts/sell/stock/?"|match_url:request.path %}
+            {% show_menu "AccountsSellStockMenu" "unordered-list"%}
+        {% endif %}
+    </div>
+
+    <br/>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Код лота</th>
+            <th>Предмет торгов</th>
+        </tr>
+       </thead>
+        <tbody>
+        {% for request in list %}
+            <tr>
+                <td>{{ request.auction.lot.object_name }}</td>
+                <td>{{ request.auction.lot.object_name }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5">Нет ни одного лота</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

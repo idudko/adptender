@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/base/jquery.ui.spinner.css" type="text/css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery.jscrollpane.css" type="text/css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery.jscrollpane.lozenge.css" type="text/css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/ui.spinner.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-timers.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-cookies.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jscrollpane.min.js"></script>
+
+
+    <style type="text/css" id="page-css">
+        #container {
+            width: 760px;
+            background: #eeeef4;
+            padding: 20px;
+            margin: 20px auto 20px 0;
+
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+        
+        /* Styles specific to this particular page */
+        .scroll-pane, .scroll-pane-arrows {
+            width: 100%;
+            height: 200px;
+            overflow: auto;
+        }
+    </style>
+    
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            function init_scroll(){
+                $('.scroll-pane-arrows').jScrollPane({
+			        showArrows:true,
+			        maintainPosition: false}
+                );
+            }
+            init_scroll();
+
+            $.getJSON('{% url apps.request.views.is_request_add_permitted type=1 %}', function(json) {
+                if (!json.permitted){
+                    $('#request_link').bind('click',function(event) {
+                        event.preventDefault();
+                        $("#dialog").dialog({
+                            modal: true,
+                            buttons: {
+                                Ok: function() {
+                                    $( this ).dialog( "close" );
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+
+
+            $("#step").spinner({
+                min: {{ auction.auction_step }},
+                step: {{ auction.auction_step }}
+            });
+        
+
+            $('#send_bet').bind('click',function(event) {
+                event.preventDefault();
+                $.ajax({
+                    headers:{"X-CSRFToken": getCookie('csrftoken')},
+                    type:"POST",
+                    data: {'amount':$('#step').val()},
+                    url: "{% url apps.auction.views.do_bet tender=auction.id %}",
+                    success: function() {
+                    }
+                });
+                get_bet_list();
+            });
+
+            function get_bet_list() {;
+                var cont ='';
+                var first = true;
+                $.getJSON('{% url apps.auction.views.bet_list %}', {auction:{{ auction.id }} }, function(json) {
+                    $('#log').html('');
+                    $.each(json, function() {
+                        cont += (this.date + ' - ' + this.owner + ' сделал ставку ' + this.value + ', предложив цену '+ this.result_price +'<br/>\n');
+                        if (first){
+                           $("#current_price").html(this.result);
+                        }
+                        first = false;
+                    })
+                    if (json.length == 0){
+                        cont = 'Ставок нет';
+                    }
+                    $('#log').html(cont);
+                    init_scroll();
+                });
+            }
+
+
+            $("#log").everyTime(60000, function() {
+                get_bet_list();
+            });
+            get_bet_list();
+            
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div id="dialog" title="Внимание!" style="display:none;">
+        <p>Отсутствует аккредитация на участие в торгах.</p>
+        <a href="{% url apps.accreditation.views.add %}">Подать заявление на аккредитацию</a>
+    </div>
+
+
+    {{ auction.get_status_display }}
+    <h2>{{ auction.lot.object_name }}, АДП-{{ auction.id }}</h2>
+    <hr/>
+
+    Лот №{{ auction.lot.id }}. {{ auction.lot.object_name }}
+    <br/>
+    Описание: {{ auction.lot.description }}
+    <br/>
+    Файл: <a href="{{ auction.lot.file.url }}" title="Открыть файл">Описание ({{ auction.lot.file.size|filesizeformat }})</a>
+
+    <br/>
+    <br/>
+    <a href="{{ auction.sell_request.deposit_agreement_project.url }}" title="Открыть файл">Проект договора о задатке
+        ({{ auction.sell_request.deposit_agreement_project.size|filesizeformat }})</a>
+    <br/>
+    <a href="{{ auction.sell_request.sale_agreement_project.url }}" title="Открыть файл">Проект договора купли-продажи имущества
+        (предприятия) должника ({{ auction.sell_request.sale_agreement_project.size|filesizeformat }})</a>
+    <br/>
+    <h4>Начальная цена: {{ auction.start_price }}</h4>
+
+    Начало торгов
+    <br/>
+    {{ auction.event_start_date|date:"d.m.Y H:i" }}
+    <br/>
+    <br/>
+    Подведение итогов
+    <br/>
+    {{ auction.event_end_date|date:"d.m.Y H:i" }}
+    <br/>
+    <br/>
+
+    Период приёма заявок
+    <br/>
+    {{ auction.request_accept_start_date|date:"d.m.Y H:i" }}
+    <br/>
+    {{ auction.request_accept_end_date|date:"d.m.Y H:i" }}
+    <br/>
+    <br/>
+    Форма проведения: {{ auction.get_type_display }}
+    <br/>
+
+{% ifequal auction.type 1 %}
+    Шаг аукциона: {{ auction.auction_step|default:'Нет данных' }}
+{% endifequal %}
+
+    <br/>
+    <br/>
+    Сумма задатка: {{ auction.deposit_amount|default:'Нет данных' }}
+    <br/>
+    Окончание приёма задатка:
+    {{ auction.deposit_payment_date|date:"d.m.Y H:i" }}
+    <br/>
+
+{% if user.is_authenticated %}
+{% ifequal auction.type 1 %}
+{% ifequal auction.status 6 %}
+{% ifequal organizer.bet_approve 1%}
+    <h4>Текущая цена: <span id="current_price">{{ auction.result_price|default:'' }}</span></h4>
+    <br/>
+
+    <form id="bet_action" action="">
+    {% csrf_token %}
+    <label for="step">Шаг:</label>
+    <input id="step" name="bet_step"/>
+    <a id="send_bet" name="send_bet" href="">Сделать ставку</a>
+    </form>
+    
+    <br/>
+    <br/>
+{% endifequal %}
+    <h3>Ход торгов</h3>
+
+		<!--scrollBox-->
+		<div id="container">
+
+			<div class="scroll-pane-arrows">
+                <div id="log"></div>
+                
+			</div>
+		</div>
+		<!--end scrollBox-->
+
+{% endifequal %}
+{% endifequal %}    
+{% endif %}
+
+{% ifequal auction.status 3 %}
+    <a id="request_link" href="{% url apps.request.views.buy_request_add id=auction.id %}">Принять участие</a>
+{% endifequal %}
+    <br/>
+    <br/>
+    <h4>Арбитражный управляющий:</h4>
+    Фамилия: {{ auction.lot.defaulter.receiver_last_name }}
+    <br/>
+    Имя: {{ auction.lot.defaulter.receiver_first_name }}
+    <br/>
+    Отчество: {{ auction.lot.defaulter.receiver_middle_name }}
+    <br/>
+    СРО: {{ auction.lot.defaulter.receiver_sro }}
+    <br/>
+    <br/>
+
+    <h4>Организатор торгов:</h4>
+    Наименование: {{ organizer.name }}
+    <br/>
+    Фактический адрес: {{ organizer.address }}
+    <br/>
+    Электронная почта: {{ organizer.email }}
+    <br/>
+    Телефон: {{ organizer.phone }}
+
+
+{% endblock %}

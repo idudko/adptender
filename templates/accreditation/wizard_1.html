@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.datetimepicker.ru.js"></script>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <script type="text/javascript">
+
+        $(function() {
+
+
+            $('#id_1-date_of_birth').datepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(1900, 1, 1),
+                maxDate: new Date(),
+                yearRange: "-90:+0",
+                changeMonth: true,
+			    changeYear: true
+            });
+
+
+            $('#id_1-document_date_of_issue').datepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(1960, 1, 1),
+                maxDate: new Date(),
+                yearRange: "-50:+0",
+                changeMonth: true,
+			    changeYear: true
+            });            
+
+
+            $('#id_1-start_date').datepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31)
+            });
+
+            $('#id_1-end_date').datepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                defaultDate: '+3y',
+                maxDate: new Date(2020, 12, 31)
+            });
+
+	});
+    </script>
+{% endblock %}
+
+{% block content %}
+<h3>Заявление на аккредитацию</h3>
+<p>Шаг {{ step }} из {{ step_count }}</p>
+<p>Уважаемый оператор! Просьба выдать мне аккредитацию для участия в торгах в электронной форме на электронной площадке
+    <a href="http://www.adptender.ru">www.adptender.ru</a>. Настоящим заявляю, что полностью и безусловно присоединяюсь
+    к <a href="/documents/reglament/">регламенту</a>, условия которого определены Организатором системы, в качестве участника торгов.
+    Подлинность и достоверность приложенных к заявлению на аккредитацию документов подтверждаю.</p>
+
+    <form action="{{ url }}" method="post" enctype="multipart/form-data" class="uniForm">{% csrf_token %}
+
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
+
+        <div class="buttonHolder">
+            <input type="submit" value="Отправить" />
+        </div>
+        <br/>
+    </form>
+
+
+{% endblock %}

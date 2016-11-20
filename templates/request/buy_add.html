@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input:checkbox[name="confirm"]').removeAttr('checked');
+            $("input:submit[name='sub']").attr('disabled', true);
+            $('input:checkbox[name="confirm"]').click(function() {
+                $("input:submit[name='sub']").attr('disabled', !$('input:checkbox[name="confirm"]').is(':checked'));
+            });
+        });
+
+    </script>
+{% endblock %}
+{% block content %}
+    <form action="{{ url }}" method="post" enctype="multipart/form-data" class="uniForm">
+        <div class="header">
+            <h3>Резмещение заявки на участие в торгах</h3>
+        </div>
+
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="ctrlHolder">
+                <!--<p class="label">{{ field.label_tag }} {% if field.field.required %}<span>*</span>{% endif %}</p>-->
+                <label for="id_{{field.name}}">{% if field.field.required %}<em>*</em>{% endif %}{{ field.label }}</label>
+
+                {{ field }}
+                {% if field.help_text %}<p class="formHint">{{ field.help_text }}</p>{% endif %}
+            </div>
+            <!--{% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}-->
+            <!--{% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}-->
+        {% endfor %}
+
+        <div class="buttonHolder">
+            <input type="submit" name="sub" id="sub" value="Сохранить"/>
+        </div>
+    </form>
+{% endblock %}

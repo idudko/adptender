@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+    
+    <a href="{% url apps.accreditation.views.add %}" title="Подать заявление">Подать заявление</a>
+    <br/>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Тип</th>
+            <th>Номер</th>
+            <th>Дата</th>
+            <th>Дата заявления</th>
+            <th>Срок действия</th>
+            <th>Статус</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for accreditation in accreditation_list %}
+
+            <tr>
+                <td>{{ accreditation.get_type_display }}</td>
+                <td><a href="{% url apps.accreditation.views.view id=accreditation.id %}"
+                       title="Просмотр">{{ accreditation.id }}</a></td>
+                <td>{{ accreditation.start_date|date:"d.m.Y" }}</td>
+                <td>{{ accreditation.create_date|date:"d.m.Y H:i" }}</td>
+                <td>{{ accreditation.end_date|date:"d.m.Y" }}</td>
+                <td>{{ accreditation.get_status_display }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Нет данных</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

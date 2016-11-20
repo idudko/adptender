@@ -1,0 +1,41 @@
+    {% load tree_menu_tags %}
+    {% load menu_extension_filters %}
+
+    {% ifequal menu_type "unordered-list" %}
+        <ul>
+            {% for menu_item in menu.root_item.children %}
+
+                {% if menu_item.has_children %}
+        <li>{{ menu_item.caption }}
+            <ul>
+                {% for child in menu_item.children %}
+
+                    {% if child.extension.selected_patterns|match_path:request.path %}
+                        <li><span class="alt">{{ child.caption }}</span> </li>
+                    {%  else %}
+                        <li><a href="{{ child.url }}">{{ child.caption }}</a></li>
+                    {%  endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    {% else %}
+            {% if menu_item.extension.selected_patterns|match_path:request.path %}
+                <li><span class="alt">{{ menu_item.caption }}</span> </li>
+            {%  else %}
+                <li><a href="{{  menu_item.url }}">{{ menu_item.caption }}</a></li>
+            {%  endif %}
+
+    {% endif %}
+
+    {% endfor %}
+    </ul>
+    {% endifequal %}
+
+
+    {% ifequal menu_type "ordered-list" %}
+        <ol>
+            {% for menu_item in menu.root_item.children %}
+                {% show_menu_item menu_item %}
+            {% endfor %}
+        </ol>
+    {% endifequal %}

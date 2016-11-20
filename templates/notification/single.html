@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <h3>{% trans "Notice" %}</h3>
+
+    {% if notice.is_unseen %}
+        <div class="unseen_notice">
+    {% else %}
+        <div class="notice">
+    {% endif %}
+        <span class="notice_type">[{% trans notice.notice_type.display %}]</span><br/>
+        <span class="notice_message">{{ notice.message|safe }}</span>
+        <span class="notice_time">{{ notice.added }}</span>
+    </div>
+
+{% endblock %}

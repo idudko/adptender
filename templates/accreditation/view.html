@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+
+
+    <div class="navmenu2">
+        <ul>
+            <li><span class="alt">Просмотр</span> </li>
+            <li><a href="{% url apps.accreditation.views.review id=accreditation.id %}" title="Рассмотреть заявление">Рассмотреть заявление</a></li>
+        </ul>
+    </div>
+
+    <br/><br/>
+    
+
+    <div class="header">
+        <h3>Заявление на аккредитацию</h3>
+    </div>
+
+    <table>
+        <tr>
+            <td>Тип аккредитации</td>
+            <td>{{ accreditation.get_type_display|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Период аккредитации</td>
+            <td>с {{ accreditation.start_date|date:"d.m.Y" }} по {{ accreditation.end_date|date:"d.m.Y" }}</td>
+        </tr>
+
+        <tr>
+            <td>Фамилия</td>
+            <td>{{ profile.last_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ profile.first_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>{{ profile.middle_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Страна</td>
+            <td>{{ profile.country|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Регион</td>
+            <td>{{ profile.region|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Населенный пункт</td>
+            <td>{{ profile.populated_locality_type|default:'' }} {{ profile.populated_locality|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.address|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>ИНН</td>
+            <td>{{ profile.inn|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Электронная почта</td>
+            <td>{{ profile.user.email|default:'Нет данных' }}</td>
+        </tr>
+
+         {% ifequal profile.member_type 1 %}
+         <tr>
+            <td>Документ, удостоверяющий личность</td>
+            <td>
+                <a href="{{ accreditation.identity_card.url}}"
+                   title="Открыть файл">Просмотр ({{ accreditation.identity_card.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+        {% ifequal profile.member_type 2 %}
+         <tr>
+            <th>Выписка из ЕГРЮЛ</th>
+            <td>
+                <a href="{{ accreditation.extract_egrul.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.extract_egrul.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Копии учредительных документов</th>
+            <td>
+                <a href="{{ accreditation.constituent_document.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.constituent_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Документы, подтверждающие полномочия руководителя</th>
+            <td>
+                <a href="{{ accreditation.leader_permit_document.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.leader_permit_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+
+        {% ifequal profile.member_type 3 %}
+         <tr>
+            <td>Выписка из ЕГРИП</td>
+            <td>
+                <a href="{{ accreditation.extract_egrip.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.extract_egrip.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+        <tr>
+            <th>Статус</th>
+            <th>{{ accreditation.get_status_display|default:'Нет данных' }}</th>
+        </tr>
+
+         {% ifequal accreditation.status 3 %}
+         <tr>
+            <th>Причина отказа в аккредитации</th>
+            <th>{{ accreditation.review }}</th>
+        </tr>
+        {% endifequal %}
+    </table>
+    
+{% endblock %}

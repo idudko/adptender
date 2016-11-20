@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+    
+    <div class="header">
+        <h3>Рассылка сообщений пользователям</h3>
+    </div>
+
+    <form action="{{ url }}" method="post" class="uniForm">
+
+        {% csrf_token %}
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label|capfirst }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+         <div class="buttonHolder">
+            <input type="submit" value="Отправить"/>
+         </div>
+    </form>
+{% endblock %}

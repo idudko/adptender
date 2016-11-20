@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load tree_menu_tags %}
+    {% load url_filters %}
+
+    <div class="navmenu2">
+        {% if "^/accounts/buy/?"|match_url:request.path %}
+            {% show_menu "AccountsBuyMenu" "unordered-list"%}
+        {% endif %}
+    </div>
+
+    <br/>
+    
+    <table>
+    <thead>
+        <tr>
+            <th>Дата и время проведения</th>
+            <th>Объект торгов</th>
+            <th>Шаг торгов аукциона</th>
+            <th>Тип аукциона</th>
+        </tr>
+       </thead>
+        <tbody>
+        {% for request in list %}
+            <tr>
+                <td><a href="{% url apps.auction.views.view id=request.auction.id %}"
+                       title="Просмотр">{{ request.auction.event_start_date|date:"d.m.Y H:i" }}</a>
+                </td>
+                <td>{{ request.auction.lot.object_name|default:'Нет данных' }}</td>
+                <td>{{ request.auction.start_price|default:'Нет данных' }}</td>
+                <td>{{ request.auction.get_type_display|default:'Нет данных' }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5">Нет активных аукционов</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

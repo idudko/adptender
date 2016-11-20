@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block head %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $.viewMap = {
+                //'' : $('#type,#last_name,#first_name,#middle_name,#company_name,#short_company_name,#inn,#kpp,#ogrn,#email,#phone_number,#username,#password1,#password2'),
+                '' : $('#type,#last_name,#first_name,#middle_name,#email,#phone_number,#username,#password1,#password2'),
+                '1' : $('#type,#last_name,#first_name,#middle_name,#email,#phone_number,#username,#password1,#password2'),
+                '2' : $('#type,#last_name,#first_name,#middle_name,#company_name,#short_company_name,#inn,#kpp,#email,#phone_number,#username,#password1,#password2'),
+                '3' : $('#type,#last_name,#first_name,#middle_name,#inn,#ogrn,#email,#phone_number,#username,#password1,#password2')
+            };
+
+            $(":radio[name='type']").change(function() {
+                $.each($.viewMap, function() {
+                    this.hide()
+                });
+                $.viewMap[$(this).val()].show();
+            });
+
+            $('input:radio[id="id_type_0"]').filter('[value="1"]').attr('checked', true);
+            $('input:radio[id="id_type_0"]').change();
+
+            $('input:checkbox[name="id_confirm"]').removeAttr('checked');
+            $("input:submit[name='confirm']").attr('disabled', true);
+            $('input:checkbox[name="id_confirm"]').click(function() {
+                $("input:submit[name='confirm']").attr('disabled', !$('input:checkbox[name="id_confirm"]').is(':checked'));
+            });
+        });
+
+    </script>
+{% endblock %}
+{% block content %}
+    
+    <form method="post" action="." class="uniForm">
+        <h3>Регистрация</h3>
+        {% csrf_token %}
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label|capfirst }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <div class="ctrlHolder">
+            <label for="id_confirm">
+                <em>*</em>Согласен с условиями регистрации<br/>
+                <a href="/documents/reglament/" title="Регламент">Регламент ЭТП</a>
+            </label>
+            <input type="checkbox" id="id_confirm" name="id_confirm"/>
+
+        </div>
+        <div class="buttonHolder">
+            <input name="confirm" id="confirm" type="submit" value="Зарегистрироваться"/>
+        </div>
+    </form>
+{% endblock %}

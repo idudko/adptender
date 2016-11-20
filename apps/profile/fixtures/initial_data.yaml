@@ -1,0 +1,1775 @@
+- model: profile.Country
+  pk: 1
+  fields:
+    iso: 36
+    name: Австралия
+- model: profile.Country
+  pk: 2
+  fields:
+    iso: 40
+    name: Австрия
+- model: profile.Country
+  pk: 3
+  fields:
+    iso: 31
+    name: Азербайджан
+- model: profile.Country
+  pk: 4
+  fields:
+    iso: 8
+    name: Албания
+- model: profile.Country
+  pk: 5
+  fields:
+    iso: 12
+    name: Алжир
+- model: profile.Country
+  pk: 6
+  fields:
+    iso: 16
+    name: Американское Самоа
+- model: profile.Country
+  pk: 7
+  fields:
+    iso: 660
+    name: Ангилья
+- model: profile.Country
+  pk: 8
+  fields:
+    iso: 24
+    name: Ангола
+- model: profile.Country
+  pk: 9
+  fields:
+    iso: 20
+    name: Андорра
+- model: profile.Country
+  pk: 10
+  fields:
+    iso: 10
+    name: Антарктида
+- model: profile.Country
+  pk: 11
+  fields:
+    iso: 28
+    name: Антигуа и Барбуда
+- model: profile.Country
+  pk: 12
+  fields:
+    iso: 32
+    name: Аргентина
+- model: profile.Country
+  pk: 13
+  fields:
+    iso: 51
+    name: Армения
+- model: profile.Country
+  pk: 14
+  fields:
+    iso: 533
+    name: Аруба
+- model: profile.Country
+  pk: 15
+  fields:
+    iso: 4
+    name: Афганистан
+- model: profile.Country
+  pk: 16
+  fields:
+    iso: 44
+    name: Багамы
+- model: profile.Country
+  pk: 17
+  fields:
+    iso: 50
+    name: Бангладеш
+- model: profile.Country
+  pk: 18
+  fields:
+    iso: 52
+    name: Барбадос
+- model: profile.Country
+  pk: 19
+  fields:
+    iso: 48
+    name: Бахрейн
+- model: profile.Country
+  pk: 20
+  fields:
+    iso: 112
+    name: Беларусь
+- model: profile.Country
+  pk: 21
+  fields:
+    iso: 84
+    name: Белиз
+- model: profile.Country
+  pk: 22
+  fields:
+    iso: 56
+    name: Бельгия
+- model: profile.Country
+  pk: 23
+  fields:
+    iso: 204
+    name: Бенин
+- model: profile.Country
+  pk: 24
+  fields:
+    iso: 60
+    name: Бермуды
+- model: profile.Country
+  pk: 25
+  fields:
+    iso: 100
+    name: Болгария
+- model: profile.Country
+  pk: 26
+  fields:
+    iso: 68
+    name: Боливия
+- model: profile.Country
+  pk: 27
+  fields:
+    iso: 70
+    name: Босния и Герцеговина
+- model: profile.Country
+  pk: 28
+  fields:
+    iso: 72
+    name: Ботсвана
+- model: profile.Country
+  pk: 29
+  fields:
+    iso: 76
+    name: Бразилия
+- model: profile.Country
+  pk: 30
+  fields:
+    iso: 86
+    name: Британская территория в Индийском океане
+- model: profile.Country
+  pk: 31
+  fields:
+    iso: 96
+    name: Бруней-Даруссалам
+- model: profile.Country
+  pk: 32
+  fields:
+    iso: 854
+    name: Буркина-Фасо
+- model: profile.Country
+  pk: 33
+  fields:
+    iso: 108
+    name: Бурунди
+- model: profile.Country
+  pk: 34
+  fields:
+    iso: 64
+    name: Бутан
+- model: profile.Country
+  pk: 35
+  fields:
+    iso: 548
+    name: Вануату
+- model: profile.Country
+  pk: 36
+  fields:
+    iso: 348
+    name: Венгрия
+- model: profile.Country
+  pk: 37
+  fields:
+    iso: 862
+    name: Венесуэла
+- model: profile.Country
+  pk: 38
+  fields:
+    iso: 92
+    name: Виргинские острова, Британские
+- model: profile.Country
+  pk: 39
+  fields:
+    iso: 850
+    name: Виргинские острова, США
+- model: profile.Country
+  pk: 40
+  fields:
+    iso: 704
+    name: Вьетнам
+- model: profile.Country
+  pk: 41
+  fields:
+    iso: 266
+    name: Габон
+- model: profile.Country
+  pk: 42
+  fields:
+    iso: 332
+    name: Гаити
+- model: profile.Country
+  pk: 43
+  fields:
+    iso: 328
+    name: Гайана
+- model: profile.Country
+  pk: 44
+  fields:
+    iso: 270
+    name: Гамбия
+- model: profile.Country
+  pk: 45
+  fields:
+    iso: 288
+    name: Гана
+- model: profile.Country
+  pk: 46
+  fields:
+    iso: 312
+    name: Гваделупа
+- model: profile.Country
+  pk: 47
+  fields:
+    iso: 320
+    name: Гватемала
+- model: profile.Country
+  pk: 48
+  fields:
+    iso: 324
+    name: Гвинея
+- model: profile.Country
+  pk: 49
+  fields:
+    iso: 624
+    name: Гвинея-Бисау
+- model: profile.Country
+  pk: 50
+  fields:
+    iso: 276
+    name: Германия
+- model: profile.Country
+  pk: 51
+  fields:
+    iso: 831
+    name: Гернси
+- model: profile.Country
+  pk: 52
+  fields:
+    iso: 292
+    name: Гибралтар
+- model: profile.Country
+  pk: 53
+  fields:
+    iso: 340
+    name: Гондурас
+- model: profile.Country
+  pk: 54
+  fields:
+    iso: 344
+    name: Гонконг
+- model: profile.Country
+  pk: 55
+  fields:
+    iso: 1206
+    name: Голландия
+- model: profile.Country
+  pk: 56
+  fields:
+    iso: 308
+    name: Гренада
+- model: profile.Country
+  pk: 57
+  fields:
+    iso: 304
+    name: Гренландия
+- model: profile.Country
+  pk: 58
+  fields:
+    iso: 300
+    name: Греция
+- model: profile.Country
+  pk: 59
+  fields:
+    iso: 268
+    name: Грузия
+- model: profile.Country
+  pk: 60
+  fields:
+    iso: 316
+    name: Гуам
+- model: profile.Country
+  pk: 61
+  fields:
+    iso: 208
+    name: Дания
+- model: profile.Country
+  pk: 62
+  fields:
+    iso: 832
+    name: Джерси
+- model: profile.Country
+  pk: 63
+  fields:
+    iso: 262
+    name: Джибути
+- model: profile.Country
+  pk: 64
+  fields:
+    iso: 212
+    name: Доминика
+- model: profile.Country
+  pk: 65
+  fields:
+    iso: 214
+    name: Доминиканская республика
+- model: profile.Country
+  pk: 66
+  fields:
+    iso: 818
+    name: Египет
+- model: profile.Country
+  pk: 67
+  fields:
+    iso: 894
+    name: Замбия
+- model: profile.Country
+  pk: 68
+  fields:
+    iso: 732
+    name: Западная Сахара
+- model: profile.Country
+  pk: 69
+  fields:
+    iso: 716
+    name: Зимбабве
+- model: profile.Country
+  pk: 70
+  fields:
+    iso: 376
+    name: Израиль
+- model: profile.Country
+  pk: 71
+  fields:
+    iso: 356
+    name: Индия
+- model: profile.Country
+  pk: 72
+  fields:
+    iso: 360
+    name: Индонезия
+- model: profile.Country
+  pk: 73
+  fields:
+    iso: 400
+    name: Иордания
+- model: profile.Country
+  pk: 74
+  fields:
+    iso: 368
+    name: Ирак
+- model: profile.Country
+  pk: 75
+  fields:
+    iso: 364
+    name: Иран, Исламская Республика
+- model: profile.Country
+  pk: 76
+  fields:
+    iso: 372
+    name: Ирландия
+- model: profile.Country
+  pk: 77
+  fields:
+    iso: 352
+    name: Исландия
+- model: profile.Country
+  pk: 78
+  fields:
+    iso: 724
+    name: Испания
+- model: profile.Country
+  pk: 79
+  fields:
+    iso: 380
+    name: Италия
+- model: profile.Country
+  pk: 80
+  fields:
+    iso: 887
+    name: Йемен
+- model: profile.Country
+  pk: 81
+  fields:
+    iso: 132
+    name: Кабо-Верде
+- model: profile.Country
+  pk: 82
+  fields:
+    iso: 398
+    name: Казахстан
+- model: profile.Country
+  pk: 83
+  fields:
+    iso: 116
+    name: Камбоджа
+- model: profile.Country
+  pk: 84
+  fields:
+    iso: 120
+    name: Камерун
+- model: profile.Country
+  pk: 85
+  fields:
+    iso: 124
+    name: Канада
+- model: profile.Country
+  pk: 86
+  fields:
+    iso: 634
+    name: Катар
+- model: profile.Country
+  pk: 87
+  fields:
+    iso: 404
+    name: Кения
+- model: profile.Country
+  pk: 88
+  fields:
+    iso: 196
+    name: Кипр
+- model: profile.Country
+  pk: 89
+  fields:
+    iso: 417
+    name: Киргизия
+- model: profile.Country
+  pk: 90
+  fields:
+    iso: 296
+    name: Кирибати
+- model: profile.Country
+  pk: 91
+  fields:
+    iso: 165
+    name: Китай
+- model: profile.Country
+  pk: 92
+  fields:
+    iso: 166
+    name: Кокосовые (Килинг) острова
+- model: profile.Country
+  pk: 93
+  fields:
+    iso: 170
+    name: Колумбия
+- model: profile.Country
+  pk: 94
+  fields:
+    iso: 174
+    name: Коморы
+- model: profile.Country
+  pk: 95
+  fields:
+    iso: 178
+    name: Конго
+- model: profile.Country
+  pk: 96
+  fields:
+    iso: 180
+    name: Конго, Демократическая Республика
+- model: profile.Country
+  pk: 97
+  fields:
+    iso: 181
+    name: Косово
+- model: profile.Country
+  pk: 98
+  fields:
+    iso: 188
+    name: Коста-Рика
+- model: profile.Country
+  pk: 99
+  fields:
+    iso: 384
+    name: Кот д'Ивуар
+- model: profile.Country
+  pk: 100
+  fields:
+    iso: 192
+    name: Куба
+- model: profile.Country
+  pk: 101
+  fields:
+    iso: 414
+    name: Кувейт
+- model: profile.Country
+  pk: 102
+  fields:
+    iso: 418
+    name: Лаос
+- model: profile.Country
+  pk: 103
+  fields:
+    iso: 428
+    name: Латвия
+- model: profile.Country
+  pk: 104
+  fields:
+    iso: 426
+    name: Лесото
+- model: profile.Country
+  pk: 105
+  fields:
+    iso: 422
+    name: Ливан
+- model: profile.Country
+  pk: 106
+  fields:
+    iso: 434
+    name: Ливийская Арабская Джамахирия
+- model: profile.Country
+  pk: 107
+  fields:
+    iso: 430
+    name: Либерия
+- model: profile.Country
+  pk: 108
+  fields:
+    iso: 438
+    name: Лихтенштейн
+- model: profile.Country
+  pk: 109
+  fields:
+    iso: 440
+    name: Литва
+- model: profile.Country
+  pk: 110
+  fields:
+    iso: 442
+    name: Люксембург
+- model: profile.Country
+  pk: 111
+  fields:
+    iso: 480
+    name: Маврикий
+- model: profile.Country
+  pk: 112
+  fields:
+    iso: 478
+    name: Мавритания
+- model: profile.Country
+  pk: 113
+  fields:
+    iso: 450
+    name: Мадагаскар
+- model: profile.Country
+  pk: 114
+  fields:
+    iso: 175
+    name: Майотта
+- model: profile.Country
+  pk: 115
+  fields:
+    iso: 446
+    name: Макао
+- model: profile.Country
+  pk: 116
+  fields:
+    iso: 454
+    name: Малави
+- model: profile.Country
+  pk: 117
+  fields:
+    iso: 458
+    name: Малайзия
+- model: profile.Country
+  pk: 118
+  fields:
+    iso: 466
+    name: Мали
+- model: profile.Country
+  pk: 119
+  fields:
+    iso: 581
+    name: Малые Тихоокеанские отдаленные острова Соединенных Штатов
+- model: profile.Country
+  pk: 120
+  fields:
+    iso: 462
+    name: Мальдивы
+- model: profile.Country
+  pk: 121
+  fields:
+    iso: 470
+    name: Мальта
+- model: profile.Country
+  pk: 122
+  fields:
+    iso: 504
+    name: Марокко
+- model: profile.Country
+  pk: 123
+  fields:
+    iso: 474
+    name: Мартиника
+- model: profile.Country
+  pk: 124
+  fields:
+    iso: 584
+    name: Маршалловы острова
+- model: profile.Country
+  pk: 125
+  fields:
+    iso: 484
+    name: Мексика
+- model: profile.Country
+  pk: 126
+  fields:
+    iso: 583
+    name: Микронезия
+- model: profile.Country
+  pk: 127
+  fields:
+    iso: 508
+    name: Мозамбик
+- model: profile.Country
+  pk: 128
+  fields:
+    iso: 498
+    name: Молдова
+- model: profile.Country
+  pk: 129
+  fields:
+    iso: 492
+    name: Монако
+- model: profile.Country
+  pk: 130
+  fields:
+    iso: 496
+    name: Монголия
+- model: profile.Country
+  pk: 131
+  fields:
+    iso: 500
+    name: Монтсеррат
+- model: profile.Country
+  pk: 132
+  fields:
+    iso: 104
+    name: Мьянма
+- model: profile.Country
+  pk: 133
+  fields:
+    iso: 516
+    name: Намибия
+- model: profile.Country
+  pk: 134
+  fields:
+    iso: 520
+    name: Науру
+- model: profile.Country
+  pk: 135
+  fields:
+    iso: 524
+    name: Непал
+- model: profile.Country
+  pk: 136
+  fields:
+    iso: 562
+    name: Нигер
+- model: profile.Country
+  pk: 137
+  fields:
+    iso: 566
+    name: Нигерия
+- model: profile.Country
+  pk: 138
+  fields:
+    iso: 530
+    name: Нидерландские Антилы
+- model: profile.Country
+  pk: 139
+  fields:
+    iso: 528
+    name: Нидерланды
+- model: profile.Country
+  pk: 140
+  fields:
+    iso: 558
+    name: Никарагуа
+- model: profile.Country
+  pk: 141
+  fields:
+    iso: 570
+    name: Ниуэ
+- model: profile.Country
+  pk: 142
+  fields:
+    iso: 554
+    name: Новая зеландия
+- model: profile.Country
+  pk: 143
+  fields:
+    iso: 540
+    name: Новая Каледония
+- model: profile.Country
+  pk: 144
+  fields:
+    iso: 578
+    name: Норвегия
+- model: profile.Country
+  pk: 145
+  fields:
+    iso: 784
+    name: Объединенные Арабские Эмираты
+- model: profile.Country
+  pk: 146
+  fields:
+    iso: 512
+    name: Оман
+- model: profile.Country
+  pk: 147
+  fields:
+    iso: 74
+    name: Остров Буве
+- model: profile.Country
+  pk: 148
+  fields:
+    iso: 183
+    name: Остров Клиппертон
+- model: profile.Country
+  pk: 149
+  fields:
+    iso: 833
+    name: Остров Мэн
+- model: profile.Country
+  pk: 150
+  fields:
+    iso: 574
+    name: Остров Норфолк
+- model: profile.Country
+  pk: 151
+  fields:
+    iso: 162
+    name: Остров Рождества
+- model: profile.Country
+  pk: 152
+  fields:
+    iso: 663
+    name: Остров Святого Мартина
+- model: profile.Country
+  pk: 153
+  fields:
+    iso: 334
+    name: Остров Херд и острова Макдональд
+- model: profile.Country
+  pk: 154
+  fields:
+    iso: 136
+    name: Острова Кайман
+- model: profile.Country
+  pk: 155
+  fields:
+    iso: 184
+    name: Острова Кука
+- model: profile.Country
+  pk: 156
+  fields:
+    iso: 796
+    name: Острова Теркс и Кайкос
+- model: profile.Country
+  pk: 157
+  fields:
+    iso: 586
+    name: Пакистан
+- model: profile.Country
+  pk: 158
+  fields:
+    iso: 585
+    name: Палау
+- model: profile.Country
+  pk: 159
+  fields:
+    iso: 275
+    name: Палестинская территория, оккупированная
+- model: profile.Country
+  pk: 160
+  fields:
+    iso: 591
+    name: Панама
+- model: profile.Country
+  pk: 161
+  fields:
+    iso: 336
+    name: Папский Престол (Государство — город Ватикан)
+- model: profile.Country
+  pk: 162
+  fields:
+    iso: 598
+    name: Папуа-Новая Гвинея
+- model: profile.Country
+  pk: 163
+  fields:
+    iso: 600
+    name: Парагвай
+- model: profile.Country
+  pk: 164
+  fields:
+    iso: 604
+    name: Перу
+- model: profile.Country
+  pk: 165
+  fields:
+    iso: 612
+    name: Питкерн
+- model: profile.Country
+  pk: 166
+  fields:
+    iso: 616
+    name: Польша
+- model: profile.Country
+  pk: 167
+  fields:
+    iso: 620
+    name: Португалия
+- model: profile.Country
+  pk: 168
+  fields:
+    iso: 630
+    name: Пуэрто-Рико
+- model: profile.Country
+  pk: 169
+  fields:
+    iso: 807
+    name: Республика Македония
+- model: profile.Country
+  pk: 170
+  fields:
+    iso: 638
+    name: Реюньон
+- model: profile.Country
+  pk: 171
+  fields:
+    iso: 643
+    name: Россия
+- model: profile.Country
+  pk: 172
+  fields:
+    iso: 646
+    name: Руанда
+- model: profile.Country
+  pk: 173
+  fields:
+    iso: 642
+    name: Румыния
+- model: profile.Country
+  pk: 174
+  fields:
+    iso: 882
+    name: Самоа
+- model: profile.Country
+  pk: 175
+  fields:
+    iso: 674
+    name: Сан-Марино
+- model: profile.Country
+  pk: 176
+  fields:
+    iso: 678
+    name: Сан-Томе и Принсипи
+- model: profile.Country
+  pk: 177
+  fields:
+    iso: 682
+    name: Саудовская Аравия
+- model: profile.Country
+  pk: 178
+  fields:
+    iso: 748
+    name: Свазиленд
+- model: profile.Country
+  pk: 179
+  fields:
+    iso: 654
+    name: Святая Елена
+- model: profile.Country
+  pk: 180
+  fields:
+    iso: 408
+    name: Северная Корея
+- model: profile.Country
+  pk: 181
+  fields:
+    iso: 580
+    name: Северные Марианские острова
+- model: profile.Country
+  pk: 182
+  fields:
+    iso: 652
+    name: Сен-Бартельми
+- model: profile.Country
+  pk: 183
+  fields:
+    iso: 666
+    name: Сен-Пьер и Микелон
+- model: profile.Country
+  pk: 184
+  fields:
+    iso: 686
+    name: Сенегал
+- model: profile.Country
+  pk: 185
+  fields:
+    iso: 670
+    name: Сент-Винсент и Гренадины
+- model: profile.Country
+  pk: 186
+  iso: 662
+  fields:
+    name: Сент-Люсия
+- model: profile.Country
+  pk: 187
+  fields:
+    iso: 659
+    name: Сент-Китс и Невис
+- model: profile.Country
+  pk: 188
+  fields:
+    iso: 688
+    name: Сербия
+- model: profile.Country
+  pk: 189
+  fields:
+    iso: 690
+    name: Сейшелы
+- model: profile.Country
+  pk: 190
+  fields:
+    iso: 702
+    name: Сингапур
+- model: profile.Country
+  pk: 191
+  fields:
+    iso: 760
+    name: Сирийская Арабская Республика
+- model: profile.Country
+  pk: 192
+  fields:
+    iso: 703
+    name: Словакия
+- model: profile.Country
+  pk: 193
+  fields:
+    iso: 705
+    name: Словения
+- model: profile.Country
+  pk: 194
+  fields:
+    iso: 826
+    name: Соединенное Королевство Великобритании и Северной Ирландии
+- model: profile.Country
+  pk: 195
+  fields:
+    iso: 840
+    name: Соединенные Штаты Америки
+- model: profile.Country
+  pk: 196
+  fields:
+    iso: 90
+    name: Соломоновы острова
+- model: profile.Country
+  pk: 197
+  fields:
+    iso: 706
+    name: Сомали
+- model: profile.Country
+  pk: 198
+  fields:
+    iso: 736
+    name: Судан
+- model: profile.Country
+  pk: 199
+  fields:
+    iso: 740
+    name: Суринам
+- model: profile.Country
+  pk: 200
+  fields:
+    iso: 694
+    name: Сьерра-Леоне
+- model: profile.Country
+  pk: 201
+  fields:
+    iso: 762
+    name: Таджикистан
+- model: profile.Country
+  pk: 202
+  fields:
+    iso: 764
+    name: Таиланд
+- model: profile.Country
+  pk: 203
+  fields:
+    iso: 834
+    name: Танзания
+- model: profile.Country
+  pk: 204
+  fields:
+    iso: 158
+    name: Тайвань
+- model: profile.Country
+  pk: 205
+  fields:
+    iso: 626
+    name: Тимор-Лесте
+- model: profile.Country
+  pk: 206
+  fields:
+    iso: 768
+    name: Того
+- model: profile.Country
+  pk: 207
+  fields:
+    iso: 772
+    name: Токелау
+- model: profile.Country
+  pk: 208
+  fields:
+    iso: 776
+    name: Тонга
+- model: profile.Country
+  pk: 209
+  fields:
+    iso: 780
+    name: Тринидад и Тобаго
+- model: profile.Country
+  pk: 210
+  fields:
+    iso: 798
+    name: Тувалу
+- model: profile.Country
+  pk: 211
+  fields:
+    iso: 788
+    name: Тунис
+- model: profile.Country
+  pk: 212
+  fields:
+    iso: 795
+    name: Туркмения
+- model: profile.Country
+  pk: 213
+  fields:
+    iso: 792
+    name: Турция
+- model: profile.Country
+  pk: 214
+  fields:
+    iso: 800
+    name: Уганда
+- model: profile.Country
+  pk: 215
+  fields:
+    iso: 860
+    name: Узбекистан
+- model: profile.Country
+  pk: 216
+  fields:
+    iso: 804
+    name: Украина
+- model: profile.Country
+  pk: 217
+  fields:
+    iso: 876
+    name: Уоллис и Футуна
+- model: profile.Country
+  pk: 218
+  fields:
+    iso: 858
+    name: Уругвай
+- model: profile.Country
+  pk: 219
+  fields:
+    iso: 234
+    name: Фарерские острова
+- model: profile.Country
+  pk: 220
+  fields:
+    iso: 242
+    name: Фиджи
+- model: profile.Country
+  pk: 221
+  fields:
+    iso: 608
+    name: Филиппины
+- model: profile.Country
+  pk: 222
+  fields:
+    iso: 246
+    name: Финляндия
+- model: profile.Country
+  pk: 223
+  fields:
+    iso: 238
+    name: Фолклендские острова (Мальвинские)
+- model: profile.Country
+  pk: 224
+  fields:
+    iso: 250
+    name: Франция
+- model: profile.Country
+  pk: 225
+  fields:
+    iso: 254
+    name: Французская Гвиана
+- model: profile.Country
+  pk: 226
+  fields:
+    iso: 258
+    name: Французская Полинезия
+- model: profile.Country
+  pk: 227
+  fields:
+    iso: 260
+    name: Французские Южные территории
+- model: profile.Country
+  pk: 228
+  fields:
+    iso: 191
+    name: Хорватия
+- model: profile.Country
+  pk: 229
+  fields:
+    iso: 140
+    name: Центрально-Африканская Республика
+- model: profile.Country
+  pk: 230
+  fields:
+    iso: 148
+    name: Чад
+- model: profile.Country
+  pk: 231
+  fields:
+    iso: 499
+    name: Черногория
+- model: profile.Country
+  pk: 232
+  fields:
+    iso: 203
+    name: Чешская Республика
+- model: profile.Country
+  pk: 233
+  fields:
+    iso: 152
+    name: Чили
+- model: profile.Country
+  pk: 234
+  fields:
+    iso: 756
+    name: Швейцария
+- model: profile.Country
+  pk: 235
+  fields:
+    iso: 752
+    name: Швеция
+- model: profile.Country
+  pk: 236
+  fields:
+    iso: 744
+    name: Шпицберген и Ян Майен
+- model: profile.Country
+  pk: 237
+  fields:
+    iso: 144
+    name: Шри-Ланка
+- model: profile.Country
+  pk: 238
+  fields:
+    iso: 218
+    name: Эквадор
+- model: profile.Country
+  pk: 239
+  fields:
+    iso: 226
+    name: Экваториальная Гвинея
+- model: profile.Country
+  pk: 240
+  fields:
+    iso: 248
+    name: Эландские острова
+- model: profile.Country
+  pk: 241
+  fields:
+    iso: 222
+    name: Эль-Сальвадор
+- model: profile.Country
+  pk: 242
+  fields:
+    iso: 232
+    name: Эритрея
+- model: profile.Country
+  pk: 243
+  fields:
+    iso: 233
+    name: Эстония
+- model: profile.Country
+  pk: 244
+  fields:
+    iso: 231
+    name: Эфиопия
+- model: profile.Country
+  pk: 245
+  fields:
+    iso: 710
+    name: Южно-Африканская Республика
+- model: profile.Country
+  pk: 246
+  fields:
+    iso: 410
+    name: Южная Корея
+- model: profile.Country
+  pk: 247
+  fields:
+    iso: 388
+    name: Ямайка
+- model: profile.Country
+  pk: 248
+  fields:
+    iso: 392
+    name: Япония
+- model: profile.Region
+  pk: 1
+  fields:
+    code: 42
+    name: Москва
+- model: profile.Region
+  pk: 2
+  fields:
+    code: 37
+    name: Санкт-Петербург
+- model: profile.Region
+  pk: 3
+  fields:
+    code: 69
+    name: Агинский Бурятский автономный округ
+- model: profile.Region
+  pk: 4
+  fields:
+    code: 2
+    name: Алтайский край
+- model: profile.Region
+  pk: 5
+  fields:
+    code: 11
+    name: Амурская область
+- model: profile.Region
+  pk: 6
+  fields:
+    code: 12
+    name: Архангельская область
+- model: profile.Region
+  pk: 7
+  fields:
+    code: 14
+    name: Астраханская область
+- model: profile.Region
+  pk: 8
+  fields:
+    code: 15
+    name: Белгородская область
+- model: profile.Region
+  pk: 9
+  fields:
+    code: 16
+    name: Брянская область
+- model: profile.Region
+  pk: 10
+  fields:
+    code: 17
+    name: Владимирская область
+- model: profile.Region
+  pk: 11
+  fields:
+    code: 18
+    name: Волгоградская область
+- model: profile.Region
+  pk: 12
+  fields:
+    code: 19
+    name: Вологодская область
+- model: profile.Region
+  pk: 13
+  fields:
+    code: 20
+    name: Воронежская область
+- model: profile.Region
+  pk: 14
+  fields:
+    code: 10
+    name: Еврейская автономная область
+- model: profile.Region
+  pk: 15
+  fields:
+    code: 93
+    name: Забайкальский край
+- model: profile.Region
+  pk: 16
+  fields:
+    code: 22
+    name: Ивановская область
+- model: profile.Region
+  pk: 17
+  fields:
+    code: 23
+    name: Иркутская область
+- model: profile.Region
+  pk: 18
+  fields:
+    code: 75
+    name: Кабардино-Балкарская Республика
+- model: profile.Region
+  pk: 19
+  fields:
+    code: 26
+    name: Калининградская область
+- model: profile.Region
+  pk: 20
+  fields:
+    code: 28
+    name: Калужская область
+- model: profile.Region
+  pk: 21
+  fields:
+    code: 29
+    name: Камчатская область
+- model: profile.Region
+  pk: 22
+  fields:
+    code: 92
+    name: Камчатский край
+- model: profile.Region
+  pk: 23
+  fields:
+    code: 83
+    name: Карачаево-Черкесская Республика
+- model: profile.Region
+  pk: 24
+  fields:
+    code: 31
+    name: Кемеровская область
+- model: profile.Region
+  pk: 25
+  fields:
+    code: 32
+    name: Кировская область
+- model: profile.Region
+  pk: 26
+  fields:
+    code: 52
+    name: Коми-Пермяцкий автономный округ
+- model: profile.Region
+  pk: 27
+  fields:
+    code: 30
+    name: Корякский автономный округ
+- model: profile.Region
+  pk: 28
+  fields:
+    code: 33
+    name: Костромская область
+- model: profile.Region
+  pk: 29
+  fields:
+    code: 3
+    name: Краснодарский край
+- model: profile.Region
+  pk: 30
+  fields:
+    code: 4
+    name: Красноярский край
+- model: profile.Region
+  pk: 31
+  fields:
+    code: 35
+    name: Курганская область
+- model: profile.Region
+  pk: 32
+  fields:
+    code: 36
+    name: Курская область
+- model: profile.Region
+  pk: 33
+  fields:
+    code: 38
+    name: Ленинградская область
+- model: profile.Region
+  pk: 34
+  fields:
+    code: 39
+    name: Липецкая область
+- model: profile.Region
+  pk: 35
+  fields:
+    code: 40
+    name: Магаданская область
+- model: profile.Region
+  pk: 36
+  fields:
+    code: 43
+    name: Московская область
+- model: profile.Region
+  pk: 37
+  fields:
+    code: 44
+    name: Мурманская область
+- model: profile.Region
+  pk: 38
+  fields:
+    code: 13
+    name: Ненецкий автономный округ
+- model: profile.Region
+  pk: 39
+  fields:
+    code: 21
+    name: Нижегородская область
+- model: profile.Region
+  pk: 40
+  fields:
+    code: 45
+    name: Новгородская область
+- model: profile.Region
+  pk: 41
+  fields:
+    code: 46
+    name: Новосибирская область
+- model: profile.Region
+  pk: 42
+  fields:
+    code: 47
+    name: Омская область
+- model: profile.Region
+  pk: 43
+  fields:
+    code: 48
+    name: Оренбургская область
+- model: profile.Region
+  pk: 44
+  fields:
+    code: 49
+    name: Орловская область
+- model: profile.Region
+  pk: 45
+  fields:
+    code: 50
+    name: Пензенская область
+- model: profile.Region
+  pk: 46
+  fields:
+    code: 51
+    name: Пермская область
+- model: profile.Region
+  pk: 47
+  fields:
+    code: 91
+    name: Пермский край
+- model: profile.Region
+  pk: 48
+  fields:
+    code: 7
+    name: Приморский край
+- model: profile.Region
+  pk: 49
+  fields:
+    code: 53
+    name: Псковская область
+- model: profile.Region
+  pk: 50
+  fields:
+    code: 71
+    name: Республика Адыгея
+- model: profile.Region
+  pk: 51
+  fields:
+    code: 76
+    name: Республика Алтай
+- model: profile.Region
+  pk: 52
+  fields:
+    code: 72
+    name: Республика Башкортостан
+- model: profile.Region
+  pk: 53
+  fields:
+    code: 73
+    name: Республика Бурятия
+- model: profile.Region
+  pk: 54
+  fields:
+    code: 74
+    name: Республика Дагестан
+- model: profile.Region
+  pk: 55
+  fields:
+    code: 25
+    name: Республика Ингушетия
+- model: profile.Region
+  pk: 56
+  fields:
+    code: 77
+    name: Республика Калмыкия
+- model: profile.Region
+  pk: 57
+  fields:
+    code: 78
+    name: Республика Карелия
+- model: profile.Region
+  pk: 58
+  fields:
+    code: 79
+    name: Республика Коми
+- model: profile.Region
+  pk: 59
+  fields:
+    code: 80
+    name: Республика Марий Эл
+- model: profile.Region
+  pk: 60
+  fields:
+    code: 81
+    name: Республика Мордовия
+- model: profile.Region
+  pk: 61
+  fields:
+    code: 90
+    name: Республика Саха (Якутия)
+- model: profile.Region
+  pk: 62
+  fields:
+    code: 82
+    name: Республика Северная Осетия - Алания
+- model: profile.Region
+  pk: 63
+  fields:
+    code: 84
+    name: Республика Татарстан
+- model: profile.Region
+  pk: 64
+  fields:
+    code: 85
+    name: Республика Тыва
+- model: profile.Region
+  pk: 65
+  fields:
+    code: 87
+    name: Республика Хакасия
+- model: profile.Region
+  pk: 66
+  fields:
+    code: 54
+    name: Ростовская область
+- model: profile.Region
+  pk: 67
+  fields:
+    code: 55
+    name: Рязанская область
+- model: profile.Region
+  pk: 68
+  fields:
+    code: 34
+    name: Самарская область
+- model: profile.Region
+  pk: 69
+  fields:
+    code: 56
+    name: Саратовская область
+- model: profile.Region
+  pk: 70
+  fields:
+    code: 57
+    name: Сахалинская область
+- model: profile.Region
+  pk: 71
+  fields:
+    code: 58
+    name: Свердловская область
+- model: profile.Region
+  pk: 72
+  fields:
+    code: 59
+    name: Смоленская область
+- model: profile.Region
+  pk: 73
+  fields:
+    code: 8
+    name: Ставропольский край
+- model: profile.Region
+  pk: 74
+  fields:
+    code: 5
+    name: Таймырский (Долгано-Ненецкий) автономный округ
+- model: profile.Region
+  pk: 75
+  fields:
+    code: 60
+    name: Тамбовская область
+- model: profile.Region
+  pk: 76
+  fields:
+    code: 27
+    name: Тверская область
+- model: profile.Region
+  pk: 77
+  fields:
+    code: 61
+    name: Томская область
+- model: profile.Region
+  pk: 78
+  fields:
+    code: 62
+    name: Тульская область
+- model: profile.Region
+  pk: 79
+  fields:
+    code: 63
+    name: Тюменская область
+- model: profile.Region
+  pk: 80
+  fields:
+    code: 86
+    name: Удмуртская Республика
+- model: profile.Region
+  pk: 81
+  fields:
+    code: 66
+    name: Ульяновская область
+- model: profile.Region
+  pk: 82
+  fields:
+    code: 24
+    name: Усть-Ордынский Бурятский автономный округ
+- model: profile.Region
+  pk: 83
+  fields:
+    code: 9
+    name: Хабаровский край
+- model: profile.Region
+  pk: 84
+  fields:
+    code: 64
+    name: Ханты-Мансийский автономный округ
+- model: profile.Region
+  pk: 85
+  fields:
+    code: 67
+    name: Челябинская область
+- model: profile.Region
+  pk: 86
+  fields:
+    code: 88
+    name: Чеченская Республика
+- model: profile.Region
+  pk: 87
+  fields:
+    code: 68
+    name: Читинская область
+- model: profile.Region
+  pk: 88
+  fields:
+    code: 89
+    name: Чувашская Республика
+- model: profile.Region
+  pk: 89
+  fields:
+    code: 41
+    name: Чукотский автономный округ
+- model: profile.Region
+  pk: 90
+  fields:
+    code: 6
+    name: Эвенкийский автономный округ
+- model: profile.Region
+  pk: 91
+  fields:
+    code: 65
+    name: Ямало-Ненецкий автономный округ
+- model: profile.Region
+  pk: 92
+  fields:
+    code: 70
+    name: Ярославская область
+- model: profile.PopulatedLocalityType
+  pk: 1
+  fields:
+    code: 8
+    name: аул
+- model: profile.PopulatedLocalityType
+  pk: 2
+  fields:
+    code: 14
+    name: выселки(ок)
+- model: profile.PopulatedLocalityType
+  pk: 3
+  fields:
+    code: 1
+    name: город
+- model: profile.PopulatedLocalityType
+  pk: 4
+  fields:
+    code: 3
+    name: деревня
+- model: profile.PopulatedLocalityType
+  pk: 5
+  fields:
+    code: 17
+    name: железнодорожная станция
+- model: profile.PopulatedLocalityType
+  pk: 6
+  fields:
+    code: 6
+    name: курортный поселок
+- model: profile.PopulatedLocalityType
+  pk: 7
+  fields:
+    code: 10
+    name: остров
+- model: profile.PopulatedLocalityType
+  pk: 8
+  fields:
+    code: 2
+    name: посёлок
+- model: profile.PopulatedLocalityType
+  pk: 9
+  fields:
+    code: 4
+    name: посёлок городского типа
+- model: profile.PopulatedLocalityType
+  pk: 10
+  fields:
+    code: 7
+    name: рабочий (заводской) поселок
+- model: profile.PopulatedLocalityType
+  pk: 11
+  fields:
+    code: 11
+    name: село
+- model: profile.PopulatedLocalityType
+  pk: 12
+  fields:
+    code: 12
+    name: слобода
+- model: profile.PopulatedLocalityType
+  pk: 13
+  fields:
+    code: 15
+    name: станица
+- model: profile.PopulatedLocalityType
+  pk: 14
+  fields:
+    code: 16
+    name: станция
+- model: profile.PopulatedLocalityType
+  pk: 15
+  fields:
+    code: 13
+    name: хутор

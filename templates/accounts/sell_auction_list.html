@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-timers.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        $.getJSON('{% url apps.request.views.is_request_add_permitted type=2 %}', function(json) {
+            if (!json.permitted){
+                $('#request').bind('click',function(event) {
+                    event.preventDefault();
+                    $("#dialog").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    </script>
+{% endblock %}
+{% block content %}
+
+    <div id="dialog" title="Внимание!" style="display:none;">
+        <p>Отсутствует аккредитация для проведения торгов.</p>
+        <a href="{% url apps.accreditation.views.add %}">Подать заявление на аккредитацию</a>
+    </div>
+    <div id="log"></div>
+    {% load tree_menu_tags %}
+    {% load url_filters %}
+
+            <a id="request" href="{% url apps.request.views.sell_request_send %}" title="Подать заявку">Подать заявку</a>
+    <br/>
+    <br/>
+
+    <div class="navmenu2">
+        {% if "^/accounts/sell/auction/?"|match_url:request.path %}
+            {% show_menu "AccountsSellAuctionMenu" "unordered-list"%}
+        {% endif %}
+    </div>
+
+    <br/>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Дата и время проведения</th>
+            <th>Дата и время закрытия</th>
+            <th>Шаг торгов аукциона</th>
+            <th>Тип аукциона</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+       </thead>
+        <tbody>
+        {% for auction in auction_list %}
+            <tr>
+                <td><a href="{% url apps.auction.views.view id=auction.id %}"
+                       title="Просмотр">{{auction.event_start_date|date:"d.m.Y H:i" }}</a>
+                </td>
+                <td>{{ auction.event_end_date|date:"d.m.Y H:i" }}</td>
+                <td>{{ auction.auction_step|default:'Нет данных' }}</td>
+                <td>{{ auction.get_type_display|default:'Нет данных' }}</td>
+                <td>{{ auction.get_status_display|default:'Нет данных' }}</td>
+                <td><a href="{% url apps.request.views.buy_request_list id=auction.id %}">Заявки на участие</a></td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="6">Нет активных аукционов</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

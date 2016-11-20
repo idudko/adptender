@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block head %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.datetimepicker.ru.js"></script>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <script type="text/javascript">
+
+        $(function() {
+
+            $('#id_0-publication_date').datepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(2010, 1, 1),
+                maxDate: new Date(2020, 12, 31)
+            });
+
+                    $(document).ready(function() {
+            $.getJSON('{% url apps.request.views.is_request_add_permitted type=2 %}', function(json) {
+                if (!json.permitted) {
+                    $("#dialog").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function() {
+                                $( this ).dialog( "close" );
+                                $(window.location).attr('href', '/accounts/sell/auction/announced/');
+                            }
+                        }
+                    });
+                    $('div#dialog').bind('dialogclose', function(event) {
+                        $(window.location).attr('href', '/accounts/sell/auction/announced/');
+                    });
+                }
+            });
+        });
+
+	});
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="dialog" title="Внимание!" style="display:none;">
+        <p>Отсутствует аккредитация для проведения торгов.</p>
+        <a href="{% url apps.accreditation.views.add %}">Подать заявление на аккредитацию</a>
+    </div>
+
+<h3>Создание торгов</h3>
+<p>Шаг {{ step }} из {{ step_count }}</p>
+
+    <form action="" method="post" enctype="multipart/form-data" class="uniForm">{% csrf_token %}
+
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label }}
+                   </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
+
+        <div class="buttonHolder">
+            <input type="submit" value="Продолжить" />
+        </div>
+        <br/>
+    </form>
+
+{% endblock %}

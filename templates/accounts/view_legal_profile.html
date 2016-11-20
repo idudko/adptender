@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="header">
+        <h3>Профиль пользователя</h3>
+    </div>
+
+    <div class="navmenu2">
+        <ul>
+            <li><span class="alt">Просмотр</span> </li>
+            <li><a href="{% url apps.profile.views.edit %}">Редактирование</a></li>
+        </ul>
+    </div>
+
+    <br/><br/>
+
+    <table>
+        <tr>
+            <td>Наименование компании</td>
+            <td>{{ profile.company_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Страна</td>
+            <td>{{ profile.country|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Регион</td>
+            <td>{{ profile.region|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Населенный пункт</td>
+            <td>{{ profile.populated_locality_type }} {{ profile.populated_locality|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.address|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Фамилия</td>
+            <td>{{ profile.last_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ profile.first_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>{{ profile.middle_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Должность</td>
+            <td>{{ profile.post|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+    </table>
+{% endblock %}

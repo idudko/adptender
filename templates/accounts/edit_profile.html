@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.datetimepicker.ru.js"></script>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <script type="text/javascript">
+
+        $(function() {
+
+            $('#id_date_of_birth').datepicker({
+                minDate: new Date(1900, 1, 1),
+                maxDate: new Date(2020, 12, 31),
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                changeMonth: true,
+			    changeYear: true
+            });
+
+            $('#id_document_date_of_issue').datepicker({
+                minDate: new Date(1970, 12, 31),
+                maxDate: new Date(2020, 12, 31),
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                changeMonth: true,
+			    changeYear: true
+            });
+
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="header">
+        <h3>Профиль пользователя</h3>
+    </div>
+    
+    <div class="navmenu2">
+        <ul>
+            <li><a href="{% url apps.profile.views.view %}">Просмотр</a></li>
+            <li><span class="alt">Редактирование</span> </li>
+        </ul>
+    </div>
+
+    <br/><br/>
+    
+    <form action="{{ url }}" method="post" class="uniForm">
+
+        {% csrf_token %}
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label|capfirst }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+         <div class="buttonHolder">
+            <input type="submit" value="Сохранить"/>
+         </div>
+    </form>
+{% endblock %}

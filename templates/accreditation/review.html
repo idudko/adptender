@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $.viewMap = {
+                '' : $([]),
+                '1' : $([]),
+                '2' : $([]),
+                '3' : $('#review')
+            };
+
+            $(":radio[name='status']").change(function() {
+                $.each($.viewMap, function() {
+                    this.hide()
+                });
+                $.viewMap[$(this).val()].show();
+            });
+
+            $('input:radio[id="id_status_2"]').filter('[value="3"]').attr('checked', true);
+            $('input:radio[id="id_status_2"]').change();
+
+        });
+
+</script>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+
+    <div class="navmenu2">
+        <ul>
+            <li><a href="{% url apps.accreditation.views.view id=accreditation.id %}" title="Просмотр">Просмотр</a></li>
+            <li><span class="alt">Рассмотреть заявление</span> </li>
+        </ul>
+    </div>
+
+    <br/><br/>
+
+
+    <div class="header">
+        <h3>Рассмотрение заявления на аккредитацию</h3>
+    </div>
+     <table>
+        <tr>
+            <td>Тип аккредитации</td>
+            <td>{{ accreditation.get_type_display|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Фамилия</td>
+            <td>{{ profile.last_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ profile.first_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>{{ profile.middle_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Страна</td>
+            <td>{{ profile.country|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Регион</td>
+            <td>{{ profile.region|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Населенный пункт</td>
+            <td>{{ profile.populated_locality_type|default:'' }} {{ profile.populated_locality|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.address|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>ИНН</td>
+            <td>{{ profile.inn|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Электронная почта</td>
+            <td>{{ profile.user.email|default:'Нет данных' }}</td>
+        </tr>
+
+         {% ifequal profile.member_type 1 %}
+         <tr>
+            <th>Документ, удостоверяющий личность</th>
+            <td>
+                <a href="{{ accreditation.identity_card.url}}"
+                   title="Открыть файл">Просмотр ({{ accreditation.identity_card.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+        {% ifequal profile.member_type 2 %}
+         <tr>
+            <th>Выписка из ЕГРЮЛ</th>
+            <td>
+                <a href="{{ accreditation.extract_egrul.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.extract_egrul.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Учредительные документы</th>
+            <td>
+                <a href="{{ accreditation.extract_egrul.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.constituent_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+         <tr>
+            <th>Документ, подтверждающий полномочия руководителя</th>
+            <td>
+                <a href="{{ accreditation.extract_egrul.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.leader_permit_document.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+
+        {% ifequal profile.member_type 3 %}
+         <tr>
+            <th>Выписка из ЕГРИП</th>
+            <td>
+                <a href="{{ accreditation.extract_egrip.url }}"
+                   title="Открыть файл">Просмотр ({{ accreditation.extract_egrip.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        {% endifequal %}
+
+    </table>
+    <form action="{{ url }}" method="post" class="uniForm">
+    {% csrf_token %}
+    {% for field in form %}
+        <div id="{{field.name}}">
+            <div class="ctrlHolder">
+                <label for="id_{{field.name}}">
+                    {% if field.field.required %}
+                        <em>*</em>
+                    {% endif %}
+                    {{ field.label|capfirst }}
+                </label>
+
+                {{ field }}
+
+                {% if field.help_text %}
+                    <p class="formHint">{{ field.help_text }}</p>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <div class="error">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+     <div class="buttonHolder">
+        <input type="submit" value="Отправить"/>
+     </div>
+</form>
+    
+    
+{% endblock %}

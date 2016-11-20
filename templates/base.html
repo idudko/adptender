@@ -1,0 +1,130 @@
+{% load webdesign %}
+{% load tree_menu_tags %}
+{% load url_filters %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>ЭТП "Аукционный Дом Поволжья" | {% block title %}Главная{% endblock %}</title>
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/uni-form/uni-form.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/uni-form/default.uni-form.css" type="text/css" media="screen, projection">
+
+
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/custom.css" type="text/css" media="screen, projection">
+    
+    <link rel="icon" href="{{ MEDIA_URL }}images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.uni-form.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".browse a").click(function() {
+                $("link").attr("href", $(this).attr('rel'));
+                return false;
+            });
+        });
+    </script>
+
+    <!--[if lte ie 7]>
+      <style type="text/css" media="screen">
+        /* Move these to your IE6/7 specific stylesheet if possible */
+        .uniForm, .uniForm fieldset, .uniForm .ctrlHolder, .uniForm .formHint, .uniForm .buttonHolder, .uniForm .ctrlHolder ul{ zoom:1; }
+      </style>
+    <![endif]--> 
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <div class="container ">
+
+    <!-- header -->
+    <div class="signin">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="/accounts/profile/">Здравствуйте, {{ user.get_profile }}</a></li>
+                    <li class="no">
+                        <a class="black" href="{% url auth_logout %}">Выйти</a>
+                    </li>
+                {% else %}
+                    <li><a href="/accounts/register/">Зарегистрироваться</a></li>
+                    <li class="no">
+                        <a href="{% url auth_login %}">Войти</a>
+                    </li>
+                {% endif %}
+                <!-- end if NOT signed in -->
+            </ul>
+
+            <h2 class="alt"><span class="dquo">&#8220;</span>Аукционный Дом Поволжья&#8221; <br/> электронная торговая площадка</h2>
+        <hr/>
+    </div>
+
+        <div class="navmenu">
+        {% show_menu "MainMenu" "unordered-list"%}
+    </div>
+
+    <br/>
+    <hr/>
+    <br/>
+    <!-- header -->
+
+
+
+
+    {% if "^/help/?"|match_url:request.path or "^/documents/?"|match_url:request.path or "^/accounts/?"|match_url:request.path and user.is_authenticated %}
+    <div class="span-15 prepend-1 colborder">
+    {% endif %}
+
+                {% block content %}
+                    <div class="faq">
+                        <h4>{% lorem 5 w random %}</h4>
+                        <p>{% lorem 3p %}</p>
+                        <h4>{% lorem 5 w random %}</h4>
+                        <p>{% lorem 3p %}</p>
+                    </div>
+                {% endblock %}
+    {% if "^/help/?"|match_url:request.path or "^/documents/?"|match_url:request.path or "^/accounts/?"|match_url:request.path and user.is_authenticated %}
+    </div>
+
+    <div class="span-7 last">
+    {% endif %}
+
+
+        {% if "^/help/?"|match_url:request.path %}
+             {% show_menu "HelpMenu" "unordered-list"%}
+        {% endif %}
+
+        {% if "^/documents/?"|match_url:request.path %}
+             {% show_menu "DocumentsMenu" "unordered-list"%}
+        {% endif %}
+
+        {% if "^/accounts/?"|match_url:request.path and user.is_authenticated %}
+             <h3>Личный кабинет</h3>
+             {% show_menu "AccountsMenu" "unordered-list"%}
+        {% endif %}
+
+    {% if "^/help/?"|match_url:request.path or "^/documents/?"|match_url:request.path or "^/accounts/?"|match_url:request.path and user.is_authenticated %}
+    </div>
+    {% endif %}
+
+    <!-- footer -->
+    <hr/>
+    <div class="signin">
+        <ul>
+            <li>&copy;2010-{% now "Y" %} Аукционный Дом Поволжья</li>
+        </ul>
+    </div>
+    <!-- footer -->
+    </div>
+</body>
+</html>

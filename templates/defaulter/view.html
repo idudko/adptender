@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if perms.defaulter.edit %}
+        <a href="{% url apps.defaulter.views.edit id=defaulter.id %}">Редактировать</a>
+    {% endif %}
+    
+    <table>
+        <tbody>
+        <tr>
+            <th>Наименование</th>
+            <td>{{ defaulter.name }}</td>
+        </tr>
+        <tr>
+            <th>ИНН</th>
+            <td>{{ defaulter.inn }}</td>
+        </tr>
+        <tr>
+            <th>Название суда</th>
+            <td>{{ defaulter.court_name }}</td>
+        </tr>
+        <tr>
+            <th>Номер дела</th>
+            <td>{{ defaulter.case_number }}</td>
+        </tr>
+        <tr>
+            <th>Дата публикации</th>
+            <td>{{ defaulter.publication_date|date:"d.m.Y" }}</td>
+        </tr>
+        <tr>
+            <th>Основание</th>
+            <td>{{ defaulter.auction_base }}</td>
+        </tr>
+        <tr>
+            <th>Вид аукциона</th>
+            <td>{{ defaulter.auction_type }}</td>
+        </tr>
+        <tr>
+            <th>Дата начала продажи</th>
+            <td>{{ defaulter.auction_start_date|date:"d.m.Y" }}</td>
+        </tr>
+        <tr>
+            <th>Срок подачи заявок</th>
+            <td>{{ defaulter.request_accept_time|date:"d.m.Y" }}</td>
+        </tr>
+        <tr>
+            <th>Размер задатка</th>
+            <td>{{ defaulter.deposit_amount }}</td>
+        </tr>
+        <tr>
+            <th>Срок внесения задатка</th>
+            <td>{{ defaulter.deposit_payment_date|date:"d.m.Y" }}</td>
+        </tr>
+        <tr>
+            <th>Срок возврата задатка</th>
+            <td>{{ defaulter.deposit_return_date|date:"d.m.Y" }}</td>
+        </tr>
+        <tr>
+            <th>Номер счета</th>
+            <td>{{ defaulter.account_number }}</td>
+        </tr>
+        <tr>
+            <th>Проект договора о задатке</th>
+            <td>
+                <a href="{{ defaulter.agreement_project.url }}"
+                   title="Открыть файл">Просмотр ({{ defaulter.agreement_project.size|filesizeformat }})</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+
+    <div class="header">
+        <h3>Заявление на проведение торгов</h3>
+    </div>
+
+    <a href="{% url apps.request.views.sell_review id=req.id %}" title="Рассмотреть заявление">Рассмотреть заявление</a>
+    <br/>
+    <br/>
+    <table>
+        <tr>
+            <td>Наименование должника</td>
+            <td>{{ defaulter.name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>ИНН</td>
+            <td>{{ defaulter.inn|default:'Нет данных' }}</td>
+        </tr>
+     </table>
+    <h4>Арбитражный управляющий</h4>
+    <table>
+        <tr>
+            <td>Фамилия</td>
+            <td>{{ defaulter.receiver_last_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ defaulter.receiver_first_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>{{ defaulter.receiver_middle_name|default:'Нет данных' }}</td>
+        </tr>
+         <tr>
+            <td>СРО</td>
+            <td>{{ defaulter.receiver_sro|default:'Нет данных' }}</td>
+        </tr>
+      </table>
+
+    <h4>Информация о судебном решении</h4>
+    <table>
+        <tr>
+            <td>Наименование арбитражного суда</td>
+            <td>{{ defaulter.court_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Номер дела о банкротстве</td>
+            <td>{{ defaulter.case_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Основание для проведения открытых торгов</td>
+            <td>{{ defaulter.court_decision|default:'Нет данных' }}</td>
+        </tr>
+        </table>
+
+    <h4>Сведения об имуществе должника</h4>
+    <table>
+        <tr>
+            <td>Наименование объекта</td>
+            <td>{{ lot.object_name|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td>{{ lot.description|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Файл</td>
+            <td><a href="{{ lot.file.url }}"
+                   title="Открыть файл">Просмотр ({{ lot.file.size|filesizeformat }})</a></td>
+        </tr>
+    </table>
+
+    <h4>Сведения о торгах</h4>
+    <table>
+    <tr>
+        <td>Тип аукциона</td>
+        <td>{{ auction.get_type_display|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Условия конкурса</td>
+        <td>{{ auction.competition_terms|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Дата и время начала подачи заявок</td>
+        <td>{{ auction.request_accept_start_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Дата и время окончания подачи заявок</td>
+        <td>{{ auction.request_accept_end_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+        <tr>
+        <td>Размер задатка</td>
+        <td>{{ auction.deposit_amount|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Окончание приема задатка</td>
+        <td>{{ auction.deposit_payment_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Срок возврата задатка</td>
+        <td>{{ auction.deposit_return_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Банковские реквизиты</td>
+        <td>{{ auction.banking_details|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Начальная цена</td>
+        <td>{{ auction.start_price|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Шаг торгов аукциона</td>
+        <td>{{ auction.auction_step|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Дата и время проведения</td>
+        <td>{{ auction.event_start_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Дата и время закрытия</td>
+        <td>{{ auction.event_end_date|date:"d.m.Y H:i"|default:'Нет данных' }}</td>
+    </tr>
+    <tr>
+        <td>Проект договора о задатке</td>
+        <td><a href="{{ auction.deposit_agreement_project.url }}"
+                   title="Открыть файл">Просмотр ({{ auction.deposit_agreement_project.size|filesizeformat }})</a></td>
+    </tr>
+    <tr>
+        <td>Проект договора купли-продажи</td>
+        <td><a href="{{ auction.sale_agreement_project.url }}"
+                   title="Открыть файл">Просмотр ({{ auction.sale_agreement_project.size|filesizeformat }})</a></td>
+    </tr>
+    </table>
+
+    <h4>Сведения об организаторе торгов</h4>
+    <table>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.country|default:'' }}, {{ profile.region|default:'' }}, {{ profile.populated_locality_type|default:'' }} {{ profile.populated_locality|default:'' }}, {{ profile.address|default:'' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес электронной почты</td>
+            <td>{{ profile.user.email|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Контактный телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Дата публикации о проведении торгов в прессе</td>
+            <td>{{ defaulter.publication_date|date:"d.m.Y"|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <th>Статус заявки</th>
+            <th>{{ req.get_status_display|default:'Нет данных' }}</th>
+        </tr>
+    </table>
+{% endblock %}

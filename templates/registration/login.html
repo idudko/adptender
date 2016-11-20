@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>Авторизация</h3>
+
+    {% if user.is_authenticated %}
+        Что такое, {{ user.username }}? Вы же уже авторизорваны.
+        Впрочем, всегда можно <a href="{% url auth_logout %}">выйти</a>.<br/><br/>
+    {% else %}
+
+        <form method="post" action="" class="uniForm">
+
+            {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div id="errorMsg">
+            <br/>
+            <h4>Необходимо исправить следующие ошибки:</h4>
+            <ol>
+                {% for error in form.non_field_errors %}
+                    <li>{{ error|escape }}</li>
+                {% endfor %}
+            </ol>
+            </div>
+        {% endif %}
+                {% for field in form %}
+                    <div class="ctrlHolder {% if field.errors %}error{% endif %}">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}<p class="formHint">{{ field.help_text }}</p>{% endif %}
+                    {% if field.errors %}<div>{{ field.errors }}</div>{% endif %}
+                    </div>
+                {% endfor %}
+            <div class="buttonHolder">
+            <input type="submit" value="Вход">
+            </div>
+        </form>
+
+
+        <br/><br/>
+        <ul>
+            <li><a href="{% url auth_password_reset %}">Забыли пароль?</a></li>
+            <li><a href="{% url registration_register %}">Регистрация</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}

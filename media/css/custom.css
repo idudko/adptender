@@ -1,0 +1,17 @@
+body, div, span, object, iframe, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {font-size:1.0em}
+
+label {font-weight:normal;}
+
+.navmenu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none; text-align:center;}
+.navmenu li {display: inline; font-size:1.2em; font-weight:200;}
+.navmenu ul li a {text-decoration:none;  margin: 4px; padding: 5px 20px 5px 20px;}
+.navmenu ul li a:hover {color: #333; background: #eee; }
+
+
+.navmenu2 ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none; text-align:center;}
+.navmenu2 li {display: inline; font-size:1em; font-weight:100;}
+.navmenu2 ul li a {text-decoration:none;  margin: 4px; padding: 5px 10px 5px 10px;  border-bottom: 2px dashed;}
+
+.signin ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none; text-align:right;}
+.signin li {display: inline; margin: 4px;}
+

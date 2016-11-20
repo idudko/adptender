@@ -1,0 +1,234 @@
+[
+  {
+    "pk": 1, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/documents/law/", 
+      "menu_item": 8
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/documents/reglament/", 
+      "menu_item": 9
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/help/eds/", 
+      "menu_item": 6
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/help/sell/", 
+      "menu_item": 5
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/help/buy/", 
+      "menu_item": 4
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/help/about/", 
+      "menu_item": 2
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/buy/", 
+      "menu_item": 11
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/", 
+      "menu_item": 12
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/notices/", 
+      "menu_item": 13
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/profile/", 
+      "menu_item": 15
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/accreditation/", 
+      "menu_item": 17
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/financial/", 
+      "menu_item": 18
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/password/change/", 
+      "menu_item": 19
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/buy/active/", 
+      "menu_item": 21
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/buy/winner/", 
+      "menu_item": 22
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/buy/history/", 
+      "menu_item": 23
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/auction/", 
+      "menu_item": 24
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/stock/", 
+      "menu_item": 25
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/auction/announced/", 
+      "menu_item": 27
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/auction/completed/", 
+      "menu_item": 28
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/stock/announced/", 
+      "menu_item": 31
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/sell/stock/completed/", 
+      "menu_item": 32
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/request/buy/", 
+      "menu_item": 34
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/request/sell/", 
+      "menu_item": 35
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/auction/", 
+      "menu_item": 37
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/sell/", 
+      "menu_item": 38
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/accounts/", 
+      "menu_item": 39
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/documents/", 
+      "menu_item": 40
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "menu_extension.menuitemextension", 
+    "fields": {
+      "selected_patterns": "^/help/", 
+      "menu_item": 41
+    }
+  }
+]

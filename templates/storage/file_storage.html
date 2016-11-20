@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.form.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.progressbar.min.js"></script>
+<script type="text/javascript">
+
+    function cloneMore(selector, type) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + type + '-TOTAL_FORMS').val();
+        newElement.find(':input').each(function() {
+            var name = $(this).attr('name').replace('-' + (total-1) + '-','-' + total + '-');
+            var id = 'id_' + name;
+            $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+        });
+        newElement.find('label').each(function() {
+            var newFor = $(this).attr('for').replace('-' + (total-1) + '-','-' + total + '-');
+            $(this).attr('for', newFor);
+        });
+        total++;
+        $('#id_' + type + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+    }
+
+</script>
+{% endblock %}}
+{% block content %}
+
+    <form action="{{ url }}" method="post" enctype="multipart/form-data" class="uniForm">
+    {{ formset.management_form }}
+            {% csrf_token %}
+        {% for form in formset.forms %}
+            <div class='table'>
+            {% for field in form %}
+
+                <div class="ctrlHolder">
+                <label for="id_{{field.name}}">{% if field.field.required %}<em>*</em>{% endif %}{{ field.label }}</label>
+
+                {{ field }}
+                {% if field.help_text %}<p class="formHint">{{ field.help_text }}</p>{% endif %}
+                </div>
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <input type="button" value="Добавить файл" id="add_more"/>
+        <input type="submit" value="Сохранить">
+    </form>
+
+<script>
+    $('#add_more').click(function() {
+        cloneMore('div.table:last', 'mypost');
+    });
+</script>
+{% endblock %}
+

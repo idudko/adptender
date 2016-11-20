@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>Сообщения системы</h3>
+    {% load i18n %}
+    {% load pagination_tags %}
+
+    {% autopaginate notices 5 %}
+
+    <p><a href="{% url send_notification %}">Отправить уведомление</a></p>
+
+    {% if notices %}
+
+        <!--<a href="{% url notification_mark_all_seen %}">{{ "Mark all unseen notices seen" }}</a>-->
+
+        {# TODO: get timezone support working with regroup #}
+        {% regroup notices by added.date as notices_by_date %}
+
+        {% for date in notices_by_date %}
+            <h4 class="notice_date">{{ date.grouper|date:"d.m.Y" }}</h4>
+
+            {% for notice in date.list %}
+                {% if notice.is_unseen %}
+                    <div class="unseen_notice">
+                {% else %}
+                    <div class="notice">
+                {% endif %}
+                    <span class="notice_type">[{% trans notice.notice_type.display %}]</span><br/><br/>
+                    <span class="notice_message">{{ notice.message|safe }}</span>
+                    <span class="notice_time">{{ notice.added }}</span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% paginate %}
+
+    {% else %}
+        <p>{% trans "No notices." %}</p>
+    {% endif %}
+
+
+
+
+    <div class="notice_settings">
+    <br/>
+        <h3>{% trans "Settings" %}</h3>
+
+        <!--
+        {% url acct_email as email_url %}
+        {% if user.email %}
+            <p>
+                Primary email:<br />
+                <b>{{ user.email }}</b><br />
+                (change under <a href="{{ email_url }}">Account</a>)
+            </p>
+        {% else %}
+            <p>
+                <span class="warning">Note</span>:
+                You do not have a verified email address to which notices can be sent. You can add one by going to <a href="{{ email_url }}">Account</a>.
+            </p>
+        {% endif %}-->
+
+        <form method="POST" action="" class="uniForm">
+            <table class="notice_settings">
+                <thead>
+                <tr>
+                    <th>Тип уведомления</th>
+                    {% for header in notice_settings.column_headers %}
+                        <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                {% for row in notice_settings.rows %}
+                    <tr>
+                        <td>{% trans row.notice_type.display %}<br/>
+                            <span class="notice_type_description">{% trans row.notice_type.description %}</span>
+                        </td>
+                        {% for cell in row.cells %}
+                            <td>
+                                <input type="checkbox" name="{{ cell.0 }}" {% if cell.1 %}checked="yes"{% endif %}/>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+
+            </table>
+        <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+
+
+{% endblock %}

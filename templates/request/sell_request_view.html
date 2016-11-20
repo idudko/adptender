@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for breadcrumb in request.breadcrumbs %}
+        {% if not forloop.last %}<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a> > {% endif %} {% if forloop.last %} {{ breadcrumb.name }} {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+
+    <div class="header">
+        <h3>Заявление на проведение торгов</h3>
+    </div>
+
+
+
+{% ifequal req.status 1 %}
+    <a href="{% url apps.request.views.sell_review id=req.id %}" title="Рассмотреть заявление">Рассмотреть заявление</a>
+    <br/>
+    <br/>
+{% endifequal %}
+
+{% ifequal state.auct_exist False %}
+
+{% if req.status == 2 or req.status == 3 %}
+    <a href="{% url apps.request.views.sell_request_process req_id=req.id %}" title="Создать аукцион">Создать аукцион</a>
+    <br/>
+    <br/>
+{% endif %}
+
+{% endifequal %}
+
+    <table>
+    <tr>
+        <td>Заявка на проведение торгов</td>
+        <td><a href="{{ req.request_document.url }}"
+                   title="Открыть файл">Просмотр ({{ req.request_document.size|filesizeformat }})</a></td>
+    </tr>
+    <tr>
+        <td>Проект договора о задатке</td>
+        <td><a href="{{ req.deposit_agreement_project.url }}"
+                   title="Открыть файл">Просмотр ({{ req.deposit_agreement_project.size|filesizeformat }})</a></td>
+    </tr>
+    <tr>
+        <td>Проект договора купли-продажи</td>
+        <td><a href="{{ req.sale_agreement_project.url }}"
+                   title="Открыть файл">Просмотр ({{ req.sale_agreement_project.size|filesizeformat }})</a></td>
+    </tr>
+    </table>
+
+    <h4>Сведения об организаторе торгов</h4>
+    <table>
+        <tr>
+            <td>Адрес</td>
+            <td>{{ profile.country|default:'' }}, {{ profile.region|default:'' }}, {{ profile.populated_locality_type|default:'' }} {{ profile.populated_locality|default:'' }}, {{ profile.address|default:'' }}</td>
+        </tr>
+        <tr>
+            <td>Адрес электронной почты</td>
+            <td>{{ profile.user.email|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <td>Контактный телефон</td>
+            <td>{{ profile.phone_number|default:'Нет данных' }}</td>
+        </tr>
+        <tr>
+            <th>Статус заявки</th>
+            <th>{{ req.get_status_display|default:'Нет данных' }}</th>
+        </tr>
+    </table>
+{% endblock %}

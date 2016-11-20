@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/flick/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui-timepicker.css" type="text/css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.datetimepicker.ru.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $.viewMap = {
+                '' : $([]),
+                '1' : $('#auction_step'),
+                '2' : $([]),
+                '3' : $('#competition_terms'),
+                '4' : $('#competition_terms'),
+                '5' : $('#public_offer_interval,#public_offer_step,#public_offer_stop_price'),
+            };
+
+            $(":radio[name='1-type']").change(function() {
+                $.each($.viewMap, function() {
+                    this.hide()
+                });
+                $.viewMap[$(this).val()].show();
+            });
+
+            $('input:radio[id="id_1-type_0"]').filter('[value="1"]').attr('checked', true);
+            $('input:radio[id="id_1-type_0"]').change();
+
+            $('#id_1-request_accept_start_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+            $('#id_1-request_accept_end_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+            $('#id_1-event_start_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+            $('#id_1-event_end_date').datetimepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31, 17, 30),
+            });
+
+            $('#id_1-public_offer_interval').timepicker({
+                buttonImageOnly: true,
+                buttonImage: "{{ MEDIA_URL }}images/calendar.gif",
+                showOn: "button",
+	            ampm: false,
+	            hourMax: 48,
+            });
+
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block content %}
+<h3>Создание торгов</h3>
+<p>Шаг {{ step }} из {{ step_count }}</p>
+
+    <form action="" method="post" enctype="multipart/form-data" class="uniForm">{% csrf_token %}
+
+        {% for field in form %}
+            <div id="{{field.name}}">
+                <div class="ctrlHolder">
+                    <label for="id_{{field.name}}">
+                        {% if field.field.required %}
+                            <em>*</em>
+                        {% endif %}
+                        {{ field.label }}
+                   </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="formHint">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
+
+        <div class="buttonHolder">
+            <input type="submit" value="Продолжить" />
+        </div>
+        <br/>
+    </form>
+
+{% endblock %}
