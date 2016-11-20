@@ -1,2 +1,2 @@
 # adptender
-Web-site for auction house using Django framework. Not finished yet. Only initial part of software.
+Аuction for sell the property of bankrupts. Developed using Django framework. Not finished yet.
